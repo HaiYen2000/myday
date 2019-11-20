@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">My Day</string>
+    <string name="app_version">Ver 1.0</string>
+    <string name="app_company">FPT Polytechnic</string>
+
+    <!--Intro Slider-->
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Calendar</string>
+    <string name="slide_1_desc">The easiest way to manage your day !</string>
+    <string name="slide_2_title">Weather</string>
+    <string name="slide_2_desc">Let see how your day will be !</string>
+    <string name="slide_3_title">Note</string>
+    <string name="slide_3_desc">Keep something important, you found it !</string>
+    <string name="slide_4_title">Diary</string>
+    <string name="slide_4_desc">Where you can put your secret !</string>
+
+    <!--Common-->
+    <string name="image_description" />
+
+</resources>
