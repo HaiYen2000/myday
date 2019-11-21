@@ -8,12 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fox.myday.R;
-import com.fox.myday.holder.NoteHolder;
+import com.fox.myday.holder.NoteViewHolder;
 import com.fox.myday.models.Note;
 
 import java.util.List;
 
-public class StaggeredRecycleViewNoteAdapter extends RecyclerView.Adapter<NoteHolder> {
+public class StaggeredRecycleViewNoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
 
     private static final String TAG = "StaggeredRecycleViewAd";
 
@@ -27,12 +27,12 @@ public class StaggeredRecycleViewNoteAdapter extends RecyclerView.Adapter<NoteHo
 
     @NonNull
     @Override
-    public NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NoteHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.note_item, parent, false));
+    public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new NoteViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.note_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoteHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         Note note = mNotes.get(position);
         holder.tvTitle.setText(note.NOTE_TITLE);
         holder.tvContent.setText(note.NOTE_CONTENT);

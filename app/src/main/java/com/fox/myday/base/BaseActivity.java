@@ -88,6 +88,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 intent = new Intent(getApplicationContext(), ShareActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startAnimatedActivity(intent);
+                finish();
                 break;
             case R.id.nav_about:
                 intent = new Intent(getApplicationContext(), AboutActivity.class);

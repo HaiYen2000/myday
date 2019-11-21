@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fox.myday.R;
 
-public class NoteHolder extends RecyclerView.ViewHolder {
+public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     public TextView tvTitle;
     public TextView tvContent;
 
-    public NoteHolder(@NonNull View itemView) {
+    public NoteViewHolder(@NonNull View itemView) {
         super(itemView);
         tvTitle = itemView.findViewById(R.id.tvTitle);
         tvContent = itemView.findViewById(R.id.tvContent);
