@@ -33,5 +33,21 @@ public class Constants {
 
     // Time in milliseconds; only reload weather if last update is longer ago than this value
     private static final int NO_UPDATE_REQUIRED_THRESHOLD = 300000;
+    //Event Table
+    public static final String EVENT_TABLE = "event";
+    //Column event
+
+    public static final String EVENT_ID = "id";
+    public static final String EVENT_TITLE = "title";
+    public static final String EVENT_CONTENT = "content";
+    public static final String EVENT_LOCATION= "created_location";
+    //Query create event(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_location (text not null)
+
+    public static final String CREATE_EVENT_TABLE = "CREATE TABLE " + EVENT_TABLE + "(" +
+            "" + EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "" + EVENT_TITLE + " NVARCHAR(255)," +
+            "" + EVENT_CONTENT + " NCHAR(255) NVARCHAR(255) NOT NULL," +
+            "" + EVENT_LOCATION + " TEXT NOT NULL" +
+            ")";
 
 }

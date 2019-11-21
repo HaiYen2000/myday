@@ -109,5 +109,7 @@
 
     <!--About colors-->
 
-
+    <!--daily view-->
+    <color name="colorDivider">#aaaaaa</color>
+    <color name="colorWhite">#ffffff</color>
 </resources>

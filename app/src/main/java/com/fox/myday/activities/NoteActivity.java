@@ -60,26 +60,20 @@ public class NoteActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initData(){
-        Note note = new Note(1,"Test","abc", Calendar.getInstance().getTime().toString());
-        Note note1 = new Note(2,"Test","abdâdadadadadac", Calendar.getInstance().getTime().toString());
-        Note note2 = new Note(3,"Test","abadadadadadadc", Calendar.getInstance().getTime().toString());
-        Note note3 = new Note(4,"Test","abdâdadadadadc", Calendar.getInstance().getTime().toString());
-        Note note4 = new Note(5,"Test","abadadadadadadadc", Calendar.getInstance().getTime().toString());
-        Note note5 = new Note(6,"Test","abadadadadadadadadadadadadadadadadacabadadadadadadadadadadadadadadadadacabadadadadadadadadadadadadadadadadacabadadadadadadadadadadadadadadadadac", Calendar.getInstance().getTime().toString());
-        Note note6 = new Note(5,"Test","abadadadadadadadc", Calendar.getInstance().getTime().toString());
-        Note note7 = new Note(5,"Test","abadadadadadadadc", Calendar.getInstance().getTime().toString());
-        Note note8 = new Note(5,"Test","abadadadadadadadc", Calendar.getInstance().getTime().toString());
-        Note note9 = new Note(5,"Test","abadadadadadadadc", Calendar.getInstance().getTime().toString());
+        Note note = new Note(1,"그남자는 베트남사람입니다.","abc", Calendar.getInstance().getTime().toString());
+        Note note1 = new Note(2,"Test","그남자는 베트남사람입니다.", Calendar.getInstance().getTime().toString());
+        Note note2 = new Note(3,"nguyên âm","Các bạn thử phiên âm cách đọc các “từ”, “câu” sau đây sang tiếng Việt.", Calendar.getInstance().getTime().toString());
+        Note note3 = new Note(4,"Test","Hệ thống chữ viết Hangeul yêu cầu các âm tiết phải được hình thành bởi sự kết hợp giữa các nguyên âm & phụ âm.", Calendar.getInstance().getTime().toString());
+        Note note4 = new Note(5,"Hệ thống chữ viết Hangeul ","Các bạn thử phiên âm cách đọc các “từ”, “câu” sau đây sang tiếng Việt.", Calendar.getInstance().getTime().toString());
+        Note note5 = new Note(6,"sự kết hợp giữa các nguyên âm & phụ âm","", Calendar.getInstance().getTime().toString());
+
         mNotes.add(note);
         mNotes.add(note1);
         mNotes.add(note2);
         mNotes.add(note3);
         mNotes.add(note4);
         mNotes.add(note5);
-        mNotes.add(note6);
-        mNotes.add(note7);
-        mNotes.add(note8);
-        mNotes.add(note9);
+
     }
 
     private void initRecycleView(){
@@ -131,7 +125,6 @@ public class NoteActivity extends BaseActivity implements View.OnClickListener {
             }
         }
     }
-
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.create_new_note){

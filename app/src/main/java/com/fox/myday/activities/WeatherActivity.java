@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 
 import com.fox.myday.R;
@@ -38,5 +39,6 @@ public class WeatherActivity extends BaseActivity {
             }
         }
     }
+
 
 }
