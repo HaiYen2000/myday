@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fox.myday.R;
 import com.fox.myday.holder.EventHolder;
-import com.fox.myday.holder.NoteHolder;
 import com.fox.myday.models.Event;
 import com.fox.myday.models.Note;
 

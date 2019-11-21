@@ -45,14 +45,10 @@ dependencies {
     implementation "de.hdodenhof:circleimageview:$circle_image_view_version"
     //card view
     implementation "androidx.cardview:cardview:$cardview_version"
-<<<<<<< HEAD
     //timesquare
     implementation 'com.squareup:android-times-square:1.6.5@aar'
     //week view calendar custom
     implementation 'com.github.alamkanak:android-week-view:1.2.6'
-
-=======
     //Dashclock API
     implementation "com.google.android.apps.dashclock:dashclock-api:$dashclock_api_version"
->>>>>>> c29b27ac565641f1f7bfad9f911e44471c172d3d
 }

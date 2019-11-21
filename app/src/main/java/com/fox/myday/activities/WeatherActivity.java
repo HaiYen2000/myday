@@ -32,14 +32,10 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-<<<<<<< HEAD
-=======
 import android.view.MenuItem;
->>>>>>> c29b27ac565641f1f7bfad9f911e44471c172d3d
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.fox.myday.Constants;
 import com.fox.myday.R;
 import com.fox.myday.adapters.ViewPagerAdapter;

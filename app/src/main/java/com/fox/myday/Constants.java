@@ -32,8 +32,7 @@ public class Constants {
     public static final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
 
     // Time in milliseconds; only reload weather if last update is longer ago than this value
-<<<<<<< HEAD
-    private static final int NO_UPDATE_REQUIRED_THRESHOLD = 300000;
+    public static final int NO_UPDATE_REQUIRED_THRESHOLD = 300000;
     //Event Table
     public static final String EVENT_TABLE = "event";
     //Column event
@@ -50,10 +49,5 @@ public class Constants {
             "" + EVENT_CONTENT + " NCHAR(255) NVARCHAR(255) NOT NULL," +
             "" + EVENT_LOCATION + " TEXT NOT NULL" +
             ")";
-=======
-    public static final int NO_UPDATE_REQUIRED_THRESHOLD = 300000;
-
     public static final String API_KEY = BuildConfig.API_KEY;
->>>>>>> c29b27ac565641f1f7bfad9f911e44471c172d3d
-
 }
