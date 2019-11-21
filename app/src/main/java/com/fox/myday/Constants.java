@@ -29,9 +29,11 @@ public class Constants {
     public static final String DEFAULT_CITY_ID = "1581130";
     public static final int DEFAULT_ZOOM_LEVEL = 7;
 
-    protected static final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
+    public static final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
 
     // Time in milliseconds; only reload weather if last update is longer ago than this value
-    private static final int NO_UPDATE_REQUIRED_THRESHOLD = 300000;
+    public static final int NO_UPDATE_REQUIRED_THRESHOLD = 300000;
+
+    public static final String API_KEY = BuildConfig.API_KEY;
 
 }
