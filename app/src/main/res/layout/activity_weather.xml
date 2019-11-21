@@ -28,7 +28,7 @@
                 app:titleEnabled="false">
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/toolbar_weather"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
@@ -41,7 +41,8 @@
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="22dp"
                     android:baselineAligned="false"
-                    android:paddingTop="?attr/actionBarSize">
+                    android:paddingTop="?attr/actionBarSize"
+                    android:layout_marginStart="16dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"

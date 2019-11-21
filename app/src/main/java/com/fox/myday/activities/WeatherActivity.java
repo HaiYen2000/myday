@@ -144,7 +144,7 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
         progressDialog = new ProgressDialog(WeatherActivity.this);
 
         // Load toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_weather);
         setSupportActionBar(toolbar);
         if (darkTheme) {
             toolbar.setPopupTheme(R.style.AppTheme_PopupOverlay_Dark);
@@ -680,6 +680,7 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
