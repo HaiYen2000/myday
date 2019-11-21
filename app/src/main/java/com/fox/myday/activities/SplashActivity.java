@@ -9,10 +9,11 @@ import android.os.Handler;
 
 import com.fox.myday.R;
 import com.fox.myday.base.BaseActivity;
+import com.fox.myday.base.NoStatusBarActivity;
 
 import static com.fox.myday.Constants.SPLASH_TIME_OUT;
 
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends NoStatusBarActivity {
 
     private MediaPlayer startup_sound;
 

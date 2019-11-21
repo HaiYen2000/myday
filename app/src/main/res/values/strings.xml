@@ -3,6 +3,10 @@
     <string name="app_version">Ver 1.0</string>
     <string name="app_company">FPT Polytechnic</string>
 
+    <!--Navigation Drawer-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <!--Intro Slider-->
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -19,5 +23,8 @@
 
     <!--Common-->
     <string name="image_description" />
+    <string name="action_setting">Setting</string>
+    <string name="calendar_title">Calendar</string>
+    <string name="weather_title">Weather</string>
 
 </resources>

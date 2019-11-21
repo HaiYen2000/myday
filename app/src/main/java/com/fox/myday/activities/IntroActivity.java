@@ -118,7 +118,7 @@ public class IntroActivity extends BaseActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(IntroActivity.this, HomeActivity.class));
+        startActivity(new Intent(IntroActivity.this, CalendarActivity.class));
         finish();
     }
 
