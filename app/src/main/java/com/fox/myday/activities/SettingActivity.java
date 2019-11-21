@@ -39,10 +39,4 @@ public class SettingActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        navigationView.getMenu().getItem(3).setChecked(true);
-    }
-
 }

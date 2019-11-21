@@ -44,4 +44,70 @@
         <item>@color/dot_dark_screen4</item>
     </array>
 
+    <!--Calendar colors-->
+
+
+    <!--Weather colors-->
+    <color name="darkTheme_colorPrimary">#2196F3</color>
+    <color name="darkTheme_colorPrimaryDark">#1E88E5</color>
+    <color name="darkTheme_colorAccent">#2196F3</color>
+    <color name="darkTheme_colorBackground">#303030</color>
+    <color name="darkTheme_colorTintedBackground">#424242</color>
+
+    <color name="blackTheme_colorPrimary">#2196F3</color>
+    <color name="blackTheme_colorPrimaryDark">#1E88E5</color>
+    <color name="blackTheme_colorAccent">#2196F3</color>
+    <color name="blackTheme_colorBackground">#000000</color>
+    <color name="blackTheme_colorTintedBackground">#303030</color>
+
+    <color name="classic_colorPrimary">#607d8b</color>
+    <color name="classic_colorPrimaryDark">#455a64</color>
+    <color name="classic_colorAccent">#455a64</color>
+    <color name="classic_colorBackground">@android:color/transparent</color>
+    <color name="classic_colorTintedBackground">#cdcdcd</color>
+
+    <color name="classic_darkTheme_colorPrimary">#37474f</color>
+    <color name="classic_darkTheme_colorPrimaryDark">#263238</color>
+    <color name="classic_darkTheme_colorAccent">#90a4ae</color>
+    <color name="classic_darkTheme_colorBackground">#303030</color>
+    <color name="classic_darkTheme_colorTintedBackground">#263238</color>
+
+    <color name="classic_blackTheme_colorPrimary">#37474f</color>
+    <color name="classic_blackTheme_colorPrimaryDark">#263238</color>
+    <color name="classic_blackTheme_colorAccent">#90a4ae</color>
+    <color name="classic_blackTheme_colorBackground">#000000</color>
+    <color name="classic_blackTheme_colorTintedBackground">#303030</color>
+
+    <color name="text_light">#ffffff</color>
+    <color name="text_dark">#000000</color>
+    <color name="tab_indicator">#ffffff</color>
+
+    <!-- Note colors -->
+    <color name="colorNoteDefault">#FAFAFA</color>
+    <color name="colorNoteRed">#FF8A80</color>
+    <color name="colorNoteOrange">#FFD181</color>
+    <color name="colorNoteYellow">#FFFF8D</color>
+    <color name="colorNoteGreen">#CDFF90</color>
+    <color name="colorNoteCyan">#A7FEEB</color>
+    <color name="colorNoteLightBlue">#80D8FE</color>
+    <color name="colorNoteDarkBlue">#82B1FF</color>
+    <color name="colorNotePurple">#B388FE</color>
+    <color name="colorNotePink">#F9BBD0</color>
+    <color name="colorNoteBrow">#D7CCC8</color>
+    <color name="colorNoteGrey">#CFD8DD</color>
+        <!-- Basic colors -->
+    <color name="colorBlack">#000000</color>
+        <!-- Text colors -->
+    <color name="colorHint">#afafaf</color>
+
+
+    <!--Setting colors-->
+
+
+    <!--Share colors-->
+
+
+    <!--About colors-->
+
+
 </resources>

@@ -21,16 +21,49 @@
     <string name="slide_4_title"></string>
     <string name="slide_4_desc">Start up !</string>
 
+    <!--CalendarActivity-->
+    <string name="menu_calendar">Calendar</string>
+
+
+    <!--WeatherActivity-->
+    <string name="menu_weather">Weather</string>
+
+
+    <!--NoteActivity-->
+    <string name="menu_note">Note</string>
+    <string name="create_new_note">Create new note...</string>
+    <string name="title_placeholder">Title</string>
+    <string name="note_placeholder">Note</string>
+    <string name="last_modification_date">Last modification date</string>
+    <string name="note_actions">Note actions</string>
+    <string name="note_types">note_types</string>
+    <string name="checkbox_notes_button">Checkbox notes button</string>
+    <string name="draw_notes_button">Draw notes button</string>
+    <string name="micro_notes_button">Micro notes button</string>
+    <string name="photo_notes_button">Photo notes button</string>
+    <string name="note_picture">Note picture</string>
+
+
+    <!--SettingActivity-->
+    <string name="menu_setting">Setting</string>
+
+
+    <!--ShareActivity-->
+    <string name="menu_share">Share</string>
+
+
+    <!--AboutActivity-->
+    <string name="menu_about">About</string>
+
+
+    <!--nav_header_main-->
+    <string name="nav_header_title">Lương Thị Lam</string>
+    <string name="nav_header_subtitle">FPT Polytechnic</string>
+
+
     <!--Common-->
     <string name="image_description" />
     <string name="action_setting">Setting</string>
-    <string name="menu_calendar">Calendar</string>
-    <string name="menu_weather">Weather</string>
-    <string name="menu_note">Note</string>
-    <string name="menu_setting">Setting</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_about">About</string>
-    <string name="nav_header_title">Lương Thị Lam</string>
-    <string name="nav_header_subtitle">FPT Polytechnic</string>
+
 
 </resources>

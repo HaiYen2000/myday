@@ -39,10 +39,4 @@ public class WeatherActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        navigationView.getMenu().getItem(1).setChecked(true);
-    }
-
 }

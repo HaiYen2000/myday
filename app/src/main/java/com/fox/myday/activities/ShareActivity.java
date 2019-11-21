@@ -39,10 +39,4 @@ public class ShareActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        navigationView.getMenu().getItem(4).setChecked(true);
-    }
-
 }

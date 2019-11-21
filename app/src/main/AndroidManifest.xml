@@ -14,6 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activities.NoteCreationActivity"
+            android:parentActivityName=".activities.NoteActivity">
+            <meta-data
+                android:name="android.support.PARENt_ACTIVITY"
+                android:value=".activities.NoteActivity"/>
+        </activity>
+        <activity
             android:name=".activities.AboutActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

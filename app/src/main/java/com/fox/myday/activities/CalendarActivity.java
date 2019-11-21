@@ -39,9 +39,4 @@ public class CalendarActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        navigationView.getMenu().getItem(0).setChecked(true);
-    }
 }
