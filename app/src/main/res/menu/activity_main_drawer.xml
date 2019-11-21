@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_calendar"
-            android:title="Open Activity 1" />
+            android:icon="@drawable/calendar_icon"
+            android:title="@string/menu_calendar" />
         <item
             android:id="@+id/nav_weather"
-            android:title="Open Activity 2" />
+            android:icon="@drawable/weather_icon"
+            android:title="@string/menu_weather" />
+        <item
+            android:id="@+id/nav_note"
+            android:icon="@drawable/note_icon"
+            android:title="@string/menu_note" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/setting_icon"
+            android:title="@string/menu_setting" />
     </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/share_icon"
+                android:title="@string/menu_share" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/about_icon"
+                android:title="@string/menu_about" />
+        </menu>
+    </item>
 </menu>
+

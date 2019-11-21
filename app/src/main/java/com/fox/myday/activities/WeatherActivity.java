@@ -1,6 +1,5 @@
 package com.fox.myday.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 
 import android.annotation.SuppressLint;
@@ -23,8 +22,8 @@ public class WeatherActivity extends BaseActivity {
         @SuppressLint("InflateParams")
         View contentView = inflater.inflate(R.layout.activity_weather, null, false);
         drawerLayout.addView(contentView, 0);
-        navigationView.setCheckedItem(R.id.nav_calendar);
-        setTitle(R.string.weather_title);
+        navigationView.setCheckedItem(R.id.nav_weather);
+        setTitle(R.string.menu_weather);
     }
 
     @Override
@@ -45,4 +44,5 @@ public class WeatherActivity extends BaseActivity {
         super.onResume();
         navigationView.getMenu().getItem(1).setChecked(true);
     }
+
 }

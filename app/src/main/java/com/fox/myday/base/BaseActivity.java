@@ -1,12 +1,8 @@
 package com.fox.myday.base;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,7 +14,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.fox.myday.R;
+import com.fox.myday.activities.AboutActivity;
 import com.fox.myday.activities.CalendarActivity;
+import com.fox.myday.activities.NoteActivity;
+import com.fox.myday.activities.SettingActivity;
+import com.fox.myday.activities.ShareActivity;
 import com.fox.myday.activities.WeatherActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -71,6 +71,26 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_weather:
                 intent = new Intent(getApplicationContext(), WeatherActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startAnimatedActivity(intent);
+                break;
+            case R.id.nav_note:
+                intent = new Intent(getApplicationContext(), NoteActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startAnimatedActivity(intent);
+                break;
+            case R.id.nav_setting:
+                intent = new Intent(getApplicationContext(), SettingActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startAnimatedActivity(intent);
+                break;
+            case R.id.nav_share:
+                intent = new Intent(getApplicationContext(), ShareActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startAnimatedActivity(intent);
+                break;
+            case R.id.nav_about:
+                intent = new Intent(getApplicationContext(), AboutActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startAnimatedActivity(intent);
                 break;

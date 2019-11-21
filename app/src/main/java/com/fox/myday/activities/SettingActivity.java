@@ -12,7 +12,7 @@ import android.view.View;
 import com.fox.myday.R;
 import com.fox.myday.base.BaseActivity;
 
-public class CalendarActivity extends BaseActivity {
+public class SettingActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +20,10 @@ public class CalendarActivity extends BaseActivity {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //inflate your activity layout here!
         @SuppressLint("InflateParams")
-        View contentView = inflater.inflate(R.layout.activity_calendar, null, false);
+        View contentView = inflater.inflate(R.layout.activity_setting, null, false);
         drawerLayout.addView(contentView, 0);
-        navigationView.setCheckedItem(R.id.nav_calendar);
-        setTitle(R.string.menu_calendar);
+        navigationView.setCheckedItem(R.id.nav_setting);
+        setTitle(R.string.menu_setting);
     }
 
     @Override
@@ -42,6 +42,7 @@ public class CalendarActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.getMenu().getItem(3).setChecked(true);
     }
+
 }
