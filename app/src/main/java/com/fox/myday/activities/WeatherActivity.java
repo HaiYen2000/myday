@@ -1110,7 +1110,6 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
             return android.text.format.DateFormat.getDateFormat(context).format(lastCheckedDate) + " " + timeFormat;
         }
     }
-
     @Override
     public void onBackPressed() {
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -1123,6 +1122,4 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
             }
         }
     }
-
-
 }
