@@ -29,6 +29,10 @@ dependencies {
     def material_version = "1.2.0-alpha01"
     def cardview_version = "1.0.0"
     def dashclock_api_version = "2.0.0"
+    def chat_view_version = "2.2"
+    def bottom_bar_version = "1.4.0.1"
+    def time_square_version = "1.6.5@aar"
+    def week_view_version = "1.2.6"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -38,17 +42,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    //3rd Library
     //Google material
     implementation "com.google.android.material:material:$material_version"
     //CircleImageView
     implementation "de.hdodenhof:circleimageview:$circle_image_view_version"
     //card view
     implementation "androidx.cardview:cardview:$cardview_version"
-    //timesquare
-    implementation 'com.squareup:android-times-square:1.6.5@aar'
+    //Time Square
+    implementation "com.squareup:android-times-square:$time_square_version"
     //week view calendar custom
-    implementation 'com.github.alamkanak:android-week-view:1.2.6'
+    implementation "com.github.alamkanak:android-week-view:$week_view_version"
     //Dashclock API
     implementation "com.google.android.apps.dashclock:dashclock-api:$dashclock_api_version"
+    //ChartView
+    implementation "com.diogobernardino:williamchart:$chat_view_version"
+    //Bottom Bar
+    implementation "com.roughike:bottom-bar:$bottom_bar_version"
 }

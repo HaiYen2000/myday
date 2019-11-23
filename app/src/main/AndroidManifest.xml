@@ -38,9 +38,6 @@
             android:name=".activities.AboutActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.ShareActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".activities.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

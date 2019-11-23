@@ -9,11 +9,11 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-
         android:id="@+id/viewApp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -32,17 +32,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="22dp"
                     android:baselineAligned="false"
-                    android:paddingTop="?attr/actionBarSize"
-                    android:layout_marginStart="16dp">
+                    android:paddingTop="?attr/actionBarSize">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -53,66 +53,66 @@
                             android:id="@+id/todayTemperature"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="0 °C"
                             android:textColor="@color/text_light"
-                            android:textSize="36sp"/>
+                            android:textSize="36sp"
+                            tools:text="0 °C" />
 
                         <TextView
                             android:id="@+id/todayDescription"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="No data"
                             android:textColor="@color/text_light"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            tools:text="No data" />
 
                         <TextView
                             android:id="@+id/todayWind"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Wind: 0 m/s"
                             android:textColor="@color/text_light"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            tools:text="Wind: 0 m/s" />
 
                         <TextView
                             android:id="@+id/todayPressure"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="Pressure: 0 hpa"
                             android:textColor="@color/text_light"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            tools:text="Pressure: 0 hpa" />
 
                         <TextView
                             android:id="@+id/todayHumidity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="Humidity: 0 %"
                             android:textColor="@color/text_light"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            tools:text="Humidity: 0 %" />
 
                         <TextView
                             android:id="@+id/todaySunrise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="Sunrise: 00:00"
                             android:textColor="@color/text_light"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            tools:text="Sunrise: 00:00" />
 
                         <TextView
                             android:id="@+id/todaySunset"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="Sunset: 00:00"
                             android:textColor="@color/text_light"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            tools:text="Sunset: 00:00" />
 
                         <TextView
                             android:id="@+id/todayUvIndex"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="Uv Index: Loading..."
                             android:textColor="@color/text_light"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp"
+                            tools:text="Uv Index: Loading..." />
                     </LinearLayout>
 
                     <LinearLayout
@@ -130,7 +130,7 @@
                             android:paddingRight="42dp"
                             android:text=""
                             android:textAlignment="viewEnd"
-                            android:textSize="72sp"/>
+                            android:textSize="72sp" />
 
                         <TextView
                             android:id="@+id/lastUpdate"
@@ -140,7 +140,7 @@
                             android:gravity="bottom|end"
                             android:paddingRight="16dp"
                             android:textAlignment="viewEnd"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 app:tabGravity="fill"
                 app:tabIndicatorColor="@color/tab_indicator"
-                app:tabMode="fixed"/>
+                app:tabMode="fixed" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

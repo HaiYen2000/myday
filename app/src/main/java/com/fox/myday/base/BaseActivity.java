@@ -2,7 +2,6 @@ package com.fox.myday.base;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -19,7 +18,6 @@ import com.fox.myday.activities.AboutActivity;
 import com.fox.myday.activities.CalendarActivity;
 import com.fox.myday.activities.NoteActivity;
 import com.fox.myday.activities.SettingActivity;
-import com.fox.myday.activities.ShareActivity;
 import com.fox.myday.activities.WeatherActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -86,15 +84,19 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 startAnimatedActivity(intent);
                 break;
             case R.id.nav_share:
-                intent = new Intent(getApplicationContext(), ShareActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startAnimatedActivity(intent);
-                finish();
+                intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String shareSubject = getResources().getString(R.string.share_subject);
+                String shareBody = getResources().getString(R.string.share_content);
+                intent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+                intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(intent, "Share via"));
                 break;
             case R.id.nav_about:
                 intent = new Intent(getApplicationContext(), AboutActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startAnimatedActivity(intent);
+                finish();
                 break;
         }
 

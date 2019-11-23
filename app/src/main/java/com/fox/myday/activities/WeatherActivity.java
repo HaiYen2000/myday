@@ -144,7 +144,7 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
         progressDialog = new ProgressDialog(WeatherActivity.this);
 
         // Load toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar_weather);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (darkTheme) {
             toolbar.setPopupTheme(R.style.AppTheme_PopupOverlay_Dark);
@@ -680,42 +680,34 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_refresh) {
-            refreshWeather();
-            return true;
-        }
-        if (id == R.id.action_map) {
-            Intent intent = new Intent(WeatherActivity.this, MapActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.action_graphs) {
-            Intent intent = new Intent(WeatherActivity.this, GraphActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.action_search) {
-            searchCities();
-            return true;
-        }
-        if (id == R.id.action_location) {
-            getCityByLocation();
-            return true;
-        }
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(WeatherActivity.this, WeatherSettingActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.action_about) {
-            aboutDialog();
-            return true;
+        switch (item.getItemId()){
+            case R.id.action_refresh:
+                refreshWeather();
+                return true;
+            case R.id.action_map:
+                navigateActivity(MapActivity.class);
+                break;
+            case R.id.action_graphs:
+                navigateActivity(GraphActivity.class);
+                break;
+            case R.id.action_search:
+                searchCities();
+                return true;
+            case R.id.action_location:
+                getCityByLocation();
+                return true;
+            case R.id.action_settings:
+                navigateActivity(WeatherSettingActivity.class);
+                break;
+            case R.id.action_about:
+                aboutDialog();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
