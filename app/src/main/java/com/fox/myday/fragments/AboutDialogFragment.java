@@ -19,13 +19,8 @@ public class AboutDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle(getText(R.string.app_name))
-                .setMessage(TextUtils.concat(getText(R.string.about_version), "\n\n",
-                        getText(R.string.about_description), "\n\n",
-                        getText(R.string.about_developers), "\n\n",
-                        getText(R.string.about_src), "\n\n",
-                        getText(R.string.about_issues), "\n\n",
-                        getText(R.string.about_data), "\n\n",
-                        getText(R.string.about_icons)))
+                .setMessage(TextUtils.concat(getText(R.string.app_version), "\n\n",
+                        getText(R.string.about_description)))
                 .setPositiveButton(R.string.dialog_ok, null)
                 .create();
         alertDialog.show();

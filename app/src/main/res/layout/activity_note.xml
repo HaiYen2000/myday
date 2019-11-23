@@ -10,17 +10,18 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
         android:layout_above="@+id/footer"
+        android:layout_marginTop="0dp"
+        android:fillViewport="true"
+        android:paddingStart="5dp"
         android:paddingTop="5dp"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp">
+        android:paddingEnd="5dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/note_recycle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/note_recycle_view"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical" />
 
     </ScrollView>
 
