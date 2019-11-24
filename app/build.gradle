@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileOptions {
@@ -42,6 +43,7 @@ dependencies {
     def time_square_version = "1.6.5@aar"
     def week_view_version = "1.2.6"
     def glide_version = "4.10.0"
+    def firebase_auth_version = "16.0.5"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -71,4 +73,7 @@ dependencies {
     //Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    //Firebase
+    //Firebase Auth
+    implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
 }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "682807574568",
+    "firebase_url": "https://my-day-8ab27.firebaseio.com",
+    "project_id": "my-day-8ab27",
+    "storage_bucket": "my-day-8ab27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682807574568:android:7fea9f1e36fda4ed71b51d",
+        "android_client_info": {
+          "package_name": "com.fox.myday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682807574568-l1jk48mu05p75r9qv3a6aingvlkva43e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fox.myday",
+            "certificate_hash": "d7d517c475a0634be11f35630f301d9127b38c1f"
+          }
+        },
+        {
+          "client_id": "682807574568-vj3gcvpa624a1ji6qfur3f9k8f16rhur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYNelFd4Wd9a2K8XC501_UoUg2tJ4BCKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682807574568-vj3gcvpa624a1ji6qfur3f9k8f16rhur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
