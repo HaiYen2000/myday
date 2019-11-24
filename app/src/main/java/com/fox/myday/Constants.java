@@ -50,4 +50,8 @@ public class Constants {
             "" + EVENT_LOCATION + " TEXT NOT NULL" +
             ")";
     public static final String API_KEY = BuildConfig.API_KEY;
+
+    public static int ORDER_REGISTER_STATE = 0;
+    public static int ORDER_LOGIN_STATE = 1;
+
 }

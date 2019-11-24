@@ -1,9 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+    dataBinding {
+        enabled true
+    }
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "com.fox.myday"
         minSdkVersion 15
         targetSdkVersion 29

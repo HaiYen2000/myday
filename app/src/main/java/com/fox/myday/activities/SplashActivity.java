@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.fox.myday.R;
 import com.fox.myday.base.BaseActivity;
 import com.fox.myday.base.NoStatusBarActivity;
@@ -31,15 +33,11 @@ public class SplashActivity extends NoStatusBarActivity {
         Glide.with(SplashActivity.this)
                 .asGif()
                 .load(R.raw.splash)
-                .placeholder(R.drawable.android_q_logo)
-                .centerCrop()
+                .fitCenter()
                 .into(imageView);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                navigateActivity(IntroActivity.class);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            navigateActivity(IntroActivity.class);
+            finish();
         },SPLASH_TIME_OUT);
     }
 

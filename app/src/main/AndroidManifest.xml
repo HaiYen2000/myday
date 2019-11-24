@@ -16,20 +16,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activities.UserAuthenticationActivity"
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".activities.MapActivity"
             android:parentActivityName=".activities.WeatherActivity"
-            android:theme="@style/AppTheme.NoStatusBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoStatusBar" />
         <activity
             android:name=".activities.GraphActivity"
             android:label="@string/action_graphs"
             android:parentActivityName=".activities.WeatherActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.WeatherSettingActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.NoteCreationActivity"
             android:parentActivityName=".activities.NoteActivity"
@@ -40,28 +44,28 @@
         </activity>
         <activity
             android:name=".activities.AboutActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.SettingActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.NoteActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.WeatherActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.CalendarActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.IntroActivity"
-            android:theme="@style/FullScreenTheme"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenTheme" />
         <activity
             android:name=".activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -102,6 +106,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/simple_widget" />
         </receiver>
+
         <service
             android:name=".widgets.DashClockWeatherExtension"
             android:icon="@drawable/ic_cloud_white_24dp"
@@ -128,11 +133,11 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+
         <provider
             android:name=".utils.StubContentProvider"
             android:authorities="com.fox.myday.authority"
             android:exported="true" />
-
     </application>
 
 </manifest>

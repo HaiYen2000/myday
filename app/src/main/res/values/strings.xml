@@ -268,7 +268,7 @@
     <string name="action_settings">Setting</string>
     <string name="action_feedback">Feedback us !</string>
 
-    <!--    daily view-->
+    <!--Daily view-->
     <string name="time_12am">12 am</string>
     <string name="time_1am">1 am</string>
     <string name="time_2am">2 am</string>
@@ -297,8 +297,15 @@
     <string name="birth_day">I am going to birthday party</string>
     <string name="current_day_date">8 October, 2016</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--LoginFragment-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="or">or</string>
 
 
 </resources>

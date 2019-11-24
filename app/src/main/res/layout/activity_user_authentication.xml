@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#131A56"
+        android:fitsSystemWindows="true"
+        tools:context=".activities.UserAuthenticationActivity">
+
+        <com.fox.myday.base.FlexibleFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/container_wrapper"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/register_fragment"/>
+
+            <com.fox.myday.base.LoginButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnLogin"
+                android:onClick="switchFragment"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/login_fragment"/>
+
+        </com.fox.myday.base.FlexibleFrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    
+</layout>
