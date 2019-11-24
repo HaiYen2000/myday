@@ -297,7 +297,7 @@
     <string name="birth_day">I am going to birthday party</string>
     <string name="current_day_date">8 October, 2016</string>
 
-    <!--LoginFragment-->
+    <!--UserAuthenticationActivity-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="password">Password</string>
@@ -306,6 +306,7 @@
     <string name="login">Login</string>
     <string name="sign_up">Sign up</string>
     <string name="or">or</string>
-
+    <string name="action_login">Sign In</string>
+    <string name="action_register">Sign Up</string>
 
 </resources>

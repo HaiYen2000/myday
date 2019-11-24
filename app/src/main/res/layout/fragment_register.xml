@@ -1,55 +1,73 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_gravity="center"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.RegisterFragment">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/bubble"
+        android:gravity="center_vertical"
+        android:hint="@string/email"
+        android:autofillHints="@string/email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#8effffff" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bubble"
+        android:gravity="center_vertical"
+        android:hint="@string/password"
+        android:autofillHints="@string/password"
+        android:inputType="textPassword"
+        android:paddingStart="32dp"
+        android:textColor="#ffffff"
+        android:paddingEnd="32dp"
+        android:textColorHint="#8effffff" />
+
+    <EditText
+        android:id="@+id/edtRePassword"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bubble"
+        android:gravity="center_vertical"
+        android:hint="@string/confirm_password"
+        android:autofillHints="@string/confirm_password"
+        android:inputType="textPassword"
+        android:paddingEnd="32dp"
+        android:paddingStart="32dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#8effffff" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:text="@string/action_register"
+        style="?android:attr/buttonBarButtonStyle"
+        android:textAllCaps="true"
+        android:textSize="25sp"/>
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="56dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="92dp"
-            android:background="@drawable/bubble"
-            android:gravity="center_vertical"
-            android:hint="@string/email"
-            android:inputType="text"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:textColor="#ffffff"
-            android:textColorHint="#8effffff" />
+</LinearLayout>
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="56dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bubble"
-            android:gravity="center_vertical"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:paddingStart="32dp"
-            android:textColor="#ffffff"
-            android:paddingEnd="32dp"
-            android:textColorHint="#8effffff" />
-
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="56dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bubble"
-            android:gravity="center_vertical"
-            android:hint="@string/confirm_password"
-            android:inputType="textPassword"
-            android:paddingEnd="32dp"
-            android:paddingStart="32dp"
-            android:textColor="#ffffff"
-            android:textColorHint="#8effffff" />
-    </LinearLayout>
-</FrameLayout>

@@ -3,6 +3,7 @@ package com.fox.myday.base;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -214,15 +215,16 @@ public class LoginButton extends View {
                 buttonBottom);
     }
 
+    @SuppressLint("NewApi")
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (isLogin) {
-            canvas.drawText(getString(R.string.sign_up), width / 2, dpToPixels(457), signUpPaint);
-        } else {
-            canvas.drawText(getString(R.string.login), width / 2, dpToPixels(457), loginPaint);
-        }
+        //if (isLogin) {
+        //    canvas.drawText(getString(R.string.sign_up), width / 2, dpToPixels(36), signUpPaint);
+        //} else {
+        //    canvas.drawText(getString(R.string.login), width / 2, dpToPixels(36), loginPaint);
+        //}
 
         if (isLogin) {
             canvas.drawPath(loginButtonPath, loginButtonPaint);

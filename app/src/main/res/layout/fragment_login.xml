@@ -6,6 +6,7 @@
     tools:context=".fragments.LoginFragment">
 
     <EditText
+        android:id="@+id/edtEmail"
         android:layout_width="300dp"
         android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
@@ -15,30 +16,47 @@
         android:background="@drawable/bubble"
         android:gravity="center_vertical"
         android:paddingStart="32dp"
+        android:inputType="textEmailAddress"
         android:hint="@string/email"
         android:textColor="#ffffff" />
 
     <EditText
+        android:id="@+id/edtPassword"
         android:layout_width="300dp"
         android:layout_height="56dp"
-        android:paddingEnd="32dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:background="@drawable/bubble"
-        android:textColorHint="#8effffff"
         android:gravity="center_vertical"
-        android:paddingStart="32dp"
         android:hint="@string/password"
-        android:textColor="#ffffff" />
+        android:inputType="textPassword"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#8effffff" />
 
     <TextView
+        android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/forgot_password"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="@string/forgot_password"
         android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action_login"
+        style="?android:attr/buttonBarButtonStyle"
+        android:textAllCaps="true"
+        android:textSize="25sp"/>
 
 </LinearLayout>

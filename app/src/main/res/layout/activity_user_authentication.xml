@@ -25,7 +25,7 @@
             <com.fox.myday.base.LoginButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnAuthenticate"
                 android:onClick="switchFragment"/>
 
             <FrameLayout
