@@ -308,5 +308,6 @@
     <string name="or">or</string>
     <string name="action_login">Sign In</string>
     <string name="action_register">Sign Up</string>
+    <string name="action_recover">Recover password</string>
 
 </resources>

@@ -1,4 +1,4 @@
 package com.fox.myday.presenters;
 
-public interface NotePresenter {
+public class NotePresenter {
 }

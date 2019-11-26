@@ -22,6 +22,7 @@ public class Constants {
     public static final int NUM_COLUMNS = 2;
 
     public static int SPLASH_TIME_OUT = 8600;
+    public static int FRAGMENT_TIME_OUT = 2000;
 
     public static final String DEFAULT_CITY = "Hanoi";
     public static final String DEFAULT_LAT = "21.0245";
@@ -53,5 +54,7 @@ public class Constants {
 
     public static int ORDER_REGISTER_STATE = 0;
     public static int ORDER_LOGIN_STATE = 1;
+
+    public static String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
 
 }
