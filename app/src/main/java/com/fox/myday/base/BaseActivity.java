@@ -17,9 +17,10 @@ import com.fox.myday.R;
 import com.fox.myday.activities.AboutActivity;
 import com.fox.myday.activities.CalendarActivity;
 import com.fox.myday.activities.NoteActivity;
-import com.fox.myday.activities.SettingActivity;
+import com.fox.myday.activities.UserAuthenticationActivity;
 import com.fox.myday.activities.WeatherActivity;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -78,8 +79,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startAnimatedActivity(intent);
                 break;
-            case R.id.nav_setting:
-                intent = new Intent(getApplicationContext(), SettingActivity.class);
+            case R.id.nav_sign_out:
+                FirebaseAuth.getInstance().signOut();
+                intent = new Intent(getApplicationContext(), UserAuthenticationActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startAnimatedActivity(intent);
                 break;

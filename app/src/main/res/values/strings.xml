@@ -244,8 +244,8 @@
     <!--    <string name="note_picture">Note picture</string>-->
 
 
-    <!--SettingActivity-->
-    <string name="menu_setting">Setting</string>
+    <!--Sign out-->
+    <string name="menu_sign_out">Sign out</string>
 
 
     <!--Sharing-->
