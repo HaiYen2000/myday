@@ -57,7 +57,6 @@ public class Constants {
 
     public static final String CREATE_EVENTS_TABLE = "create table " +
             EVENT_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
-
             + EVENT + " TEXT," + TIME + " TEXT,"
             + DATE + " TEXT," + MONTH + " TEXT,"
             + YEAR + " TEXT," + Notify + " TEXT)";
