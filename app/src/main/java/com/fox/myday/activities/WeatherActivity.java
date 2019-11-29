@@ -267,7 +267,8 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
             if (latitude == 0 && longitude == 0) {
                 return;
             }
-            new TodayUVITask(this, WeatherActivity.this, progressDialog).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "coords", Double.toString(latitude), Double.toString(longitude));
+            new TodayUVITask(this, WeatherActivity.this, progressDialog).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
+                    "coords", Double.toString(latitude), Double.toString(longitude));
         }
     }
 
@@ -276,11 +277,13 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
 
         String lastToday = sp.getString("lastToday", "");
         if (!lastToday.isEmpty()) {
-            new TodayWeatherTask(this, this, progressDialog).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "cachedResponse", lastToday);
+            new TodayWeatherTask(this, this, progressDialog).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
+                    "cachedResponse", lastToday);
         }
         String lastLongterm = sp.getString("lastLongterm", "");
         if (!lastLongterm.isEmpty()) {
-            new LongTermWeatherTask(this, this, progressDialog).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "cachedResponse", lastLongterm);
+            new LongTermWeatherTask(this, this, progressDialog).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
+                    "cachedResponse", lastLongterm);
         }
     }
 
@@ -854,7 +857,8 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
         Log.i("LOCATION (" + location.getProvider().toUpperCase() + ")", location.getLatitude() + ", " + location.getLongitude());
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
-        new ProvideCityNameTask(this, WeatherActivity.this, progressDialog).execute("coords", Double.toString(latitude), Double.toString(longitude));
+        new ProvideCityNameTask(this, WeatherActivity.this, progressDialog).execute("coords", Double.toString(latitude),
+                Double.toString(longitude));
     }
 
     @Override

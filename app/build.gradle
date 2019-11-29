@@ -76,4 +76,7 @@ dependencies {
     //Firebase
     //Firebase Auth
     implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
+
+    implementation 'com.applandeo:material-calendar-view:1.0.1'
+
 }

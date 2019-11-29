@@ -16,7 +16,6 @@
             android:icon="@drawable/note_icon"
             android:title="@string/menu_note" />
     </group>
-
     <item android:title="Communicate">
         <menu>
             <item

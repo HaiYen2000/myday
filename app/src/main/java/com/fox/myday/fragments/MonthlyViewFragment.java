@@ -25,6 +25,4 @@ public class MonthlyViewFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_monthly_view, container, false);
         return view;
     }
-
-
 }
