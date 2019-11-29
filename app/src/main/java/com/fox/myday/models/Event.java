@@ -1,7 +1,8 @@
 package com.fox.myday.models;
 
 public class Event {
-    String event,time,date,month,year;
+
+    public String event,time,date,month,year;
 
     public Event(String event, String time, String date, String month, String year) {
         this.event = event;

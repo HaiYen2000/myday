@@ -22,24 +22,14 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         if (Constants.isCreated) {
             Log.i("CREATE_NOTE_TABLE", CREATE_NOTE_TABLE);
-<<<<<<< HEAD
             Log.i("CREATE_EVENT_TABLE", CREATE_EVENTS_TABLE);
-
-=======
-            Log.i("CREATE_EVENT_TABLE", CREATE_EVENT_TABLE);
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
         }
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_NOTE_TABLE);
-<<<<<<< HEAD
         sqLiteDatabase.execSQL(CREATE_EVENTS_TABLE);
-
-=======
-        sqLiteDatabase.execSQL(CREATE_EVENT_TABLE);
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
     }
 
     @Override

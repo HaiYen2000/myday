@@ -85,24 +85,7 @@ public class NoteActivity extends BaseActivity implements NoteView,View.OnClickL
     }
 
     private void initData(){
-<<<<<<< HEAD
-        Note note = new Note(1,"그남자는 베트남사람입니다.","abc", Calendar.getInstance().getTime().toString());
-        Note note1 = new Note(2,"Test","그남자는 베트남사람입니다.", Calendar.getInstance().getTime().toString());
-        Note note2 = new Note(3,"nguyên âm","Các bạn thử pệt.", Calendar.getInstance().getTime().toString());
-        Note note3 = new Note(4,"Test","Hệ thống chữ viế.", Calendar.getInstance().getTime().toString());
-        Note note4 = new Note(5,"Hệ thống chữ viết Hangeul ","Các bạn ếng Việt.", Calendar.getInstance().getTime().toString());
-        Note note5 = new Note(6,"sự kết hợp giữa các nguyên âm & phụ âm","", Calendar.getInstance().getTime().toString());
-
-        mNotes.add(note);
-        mNotes.add(note1);
-        mNotes.add(note2);
-        mNotes.add(note3);
-        mNotes.add(note4);
-        mNotes.add(note5);
-
-=======
         mNotes = notePresenter.onLoadAllNote();
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
     }
 
     private void initRecycleView(){

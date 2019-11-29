@@ -62,16 +62,6 @@ public class SimpleEventsListFragment extends Fragment {
     }
 
     private void initData() {
-        Event event = new Event(1, "View individual .", "716 transparent png images related to Post It Note. ", "Ha Noi");
-        Event event1 = new Event(2, "View individual icons .", "134 Free icon sets, available in SVG, PSD, PNG, EPS,.", "Ha Noi");
-        Event event2 = new Event(3, "View individual icons of note.", "716 transparent png images related to Post It Note.mages, icons and vectors. Browse our Post It ", "Ha Noi");
-        Event event3 = new Event(4, "그남자는 베트남사람입니다.", "716 transparent png images related to Post It Note. Cleanpng provides you with HQ Posrs. Browse our Post It ", "Ha Noi");
-        Event event4 = new Event(5, "View individual of note.", "10 ก.พ. 2019- สำรวจบอร์ด \"Note png\" ของ lilac__gram บน Pinterest ดูไอเดียเพิ่มเติมเกี่ยวกับ วาดเขียน ดูเดิ้ลอาร์ท และ ภาพวาด. ", "Ha Noi");
-        mEvent.add(event);
-        mEvent.add(event1);
-        mEvent.add(event2);
-        mEvent.add(event3);
-        mEvent.add(event4);
 
     }
 
@@ -91,6 +81,7 @@ public class SimpleEventsListFragment extends Fragment {
 
     }
 
+    //Class nay de drag and drop event ko can su dung
     ItemTouchHelper.Callback _ithCallback = new ItemTouchHelper.Callback() {
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
 
