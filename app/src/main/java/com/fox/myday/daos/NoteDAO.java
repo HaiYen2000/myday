@@ -28,10 +28,10 @@ public class NoteDAO extends Constants {
 
         long result = -1;
         ContentValues cv = new ContentValues();
-        cv.put(NOTE_ID,note.NOTE_ID);
+        //cv.put(NOTE_ID,note.NOTE_ID);
         cv.put(NOTE_TITLE,note.NOTE_TITLE);
         cv.put(NOTE_CONTENT,note.NOTE_CONTENT);
-        cv.put(NOTE_DATE,note.NOTE_DATE);
+        cv.put(NOTE_CREATED_DATE,note.NOTE_CREATED_DATE);
 
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         result = sqLiteDatabase.insert(NOTE_TABLE,null,cv);
@@ -48,8 +48,8 @@ public class NoteDAO extends Constants {
         cv.put(NOTE_ID,note.NOTE_ID);
         cv.put(NOTE_TITLE,note.NOTE_TITLE);
         cv.put(NOTE_CONTENT,note.NOTE_CONTENT);
-        cv.put(NOTE_DATE,note.NOTE_DATE);
-
+        cv.put(NOTE_CREATED_DATE,note.NOTE_CREATED_DATE);
+        cv.put(NOTE_MODIFIED_DATE,note.NOTE_MODIFIED_DATE);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         result = sqLiteDatabase.update(NOTE_TABLE, cv, NOTE_ID + "= ?", new String[]{String.valueOf(note.NOTE_ID)});
         sqLiteDatabase.close();
@@ -88,9 +88,10 @@ public class NoteDAO extends Constants {
                     int NOTE_ID_ = cursor.getInt(cursor.getColumnIndex(NOTE_ID));
                     String NOTE_TITLE_ = cursor.getString(cursor.getColumnIndex(NOTE_TITLE));
                     String NOTE_CONTENT_ = cursor.getString(cursor.getColumnIndex(NOTE_CONTENT));
-                    String NOTE_DATE_ = cursor.getString(cursor.getColumnIndex(NOTE_DATE));
+                    String NOTE_CREATED_DATE_ = cursor.getString(cursor.getColumnIndex(NOTE_CREATED_DATE));
+                    String NOTE_MODIFIED_DATE_ = cursor.getString(cursor.getColumnIndex(NOTE_MODIFIED_DATE));
 
-                    Note note = new Note(NOTE_ID_,NOTE_TITLE_,NOTE_CONTENT_,NOTE_DATE_);
+                    Note note = new Note(NOTE_ID_,NOTE_TITLE_,NOTE_CONTENT_,NOTE_CREATED_DATE_,NOTE_MODIFIED_DATE_);
 
                     users.add(note);
                     cursor.moveToNext();
@@ -102,13 +103,88 @@ public class NoteDAO extends Constants {
         return users;
     }
 
+    public String getCurrentTime(){
+        String current_time = null;
+        String QUERY = "SELECT DATETIME('NOW','LOCALTIME')";
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(QUERY, null);
+        if(cursor != null){
+            if(cursor.getCount() > 0){
+                cursor.moveToFirst();
+                while ((!cursor.isAfterLast())){
+                    current_time = cursor.getString(0);
+                    cursor.moveToNext();
+                }
+                cursor.close();
+                sqLiteDatabase.close();
+
+            }
+        }
+        return current_time;
+    }
+
+    public String getCreatedDayOfWeek(){
+        String day_of_week = null;
+        String QUERY = "SELECT CASE CAST (STRFTIME('%w'," + NOTE_CREATED_DATE  + ") AS INTEGER)"
+                + " WHEN 0 THEN 'Sunday'"
+                + " WHEN 1 THEN 'Monday'"
+                + " WHEN 2 THEN 'Tuesday'"
+                + " WHEN 3 THEN 'Wednesday'"
+                + " WHEN 4 THEN 'Thursday'"
+                + " WHEN 5 THEN 'Friday'"
+                + " WHEN 6 THEN 'Saturday'"
+                + " END AS 'DAYOFWEEK' FROM " + NOTE_TABLE ;
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(QUERY, null);
+        if(cursor != null){
+            if(cursor.getCount() > 0){
+                cursor.moveToFirst();
+                while ((!cursor.isAfterLast())){
+                    day_of_week = cursor.getString(0);
+                    cursor.moveToNext();
+                }
+                cursor.close();
+                sqLiteDatabase.close();
+
+            }
+        }
+        return day_of_week;
+    }
+
+    public String getModifiedDayOfWeek(){
+        String day_of_week = null;
+        String QUERY = "SELECT CASE CAST (STRFTIME('%w'," + NOTE_MODIFIED_DATE  +") AS INTEGER)"
+                + " WHEN 0 THEN 'Sunday'"
+                + " WHEN 1 THEN 'Monday'"
+                + " WHEN 2 THEN 'Tuesday'"
+                + " WHEN 3 THEN 'Wednesday'"
+                + " WHEN 4 THEN 'Thursday'"
+                + " WHEN 5 THEN 'Friday'"
+                + " WHEN 6 THEN 'Saturday'"
+                + " END AS DAYOFWEEK";
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(QUERY, null);
+        if(cursor != null){
+            if(cursor.getCount() > 0){
+                cursor.moveToFirst();
+                while ((!cursor.isAfterLast())){
+                    day_of_week = cursor.getString(0);
+                    cursor.moveToNext();
+                }
+                cursor.close();
+                sqLiteDatabase.close();
+
+            }
+        }
+        return day_of_week;
+    }
+
     public Note getNote(int id) {
 
         Note note = null;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(NOTE_TABLE, new String[]{NOTE_ID, NOTE_TITLE, NOTE_CONTENT, NOTE_DATE}, NOTE_ID + " = ? ", new String[]{String.valueOf(id)}, null, null, null, null);
+        Cursor cursor = db.query(NOTE_TABLE, new String[]{NOTE_ID, NOTE_TITLE, NOTE_CONTENT, NOTE_CREATED_DATE, NOTE_MODIFIED_DATE}, NOTE_ID + " = ? ", new String[]{String.valueOf(id)}, null, null, null, null);
 
-        // moveToFirst : kiem tra xem cursor co chua du lieu khong, ham nay tra ve gia tri la true or false
         if (cursor != null && cursor.moveToFirst()) {
 
             int id_ = cursor.getInt(cursor.getColumnIndex(NOTE_ID));
@@ -117,10 +193,12 @@ public class NoteDAO extends Constants {
 
             String content_ = cursor.getString(cursor.getColumnIndex(NOTE_CONTENT));
 
-            String date_ = cursor.getString(cursor.getColumnIndex(NOTE_DATE));
+            String created_date_ = cursor.getString(cursor.getColumnIndex(NOTE_CREATED_DATE));
+
+            String modified_date_ = cursor.getString(cursor.getColumnIndex(NOTE_MODIFIED_DATE));
 
             // khoi tao user voi cac gia tri lay duoc
-            note = new Note(id_, title_, content_, date_);
+            note = new Note(id_, title_, content_, created_date_,modified_date_);
         }
         cursor.close();
         return note;

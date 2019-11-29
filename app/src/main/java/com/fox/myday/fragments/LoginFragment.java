@@ -41,8 +41,9 @@ public class LoginFragment extends Fragment implements OnLoginListener, View.OnC
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_login, container, false);
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        user.reload();
+        if(mAuth.getCurrentUser() != null){
+            mAuth.getCurrentUser().reload();
+        }
         initViews(inflate);
         tvRecoverPassword.setOnClickListener(this);
         btnLogin.setOnClickListener(this);

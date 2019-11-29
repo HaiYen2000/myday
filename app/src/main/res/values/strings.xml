@@ -220,13 +220,17 @@
     <string name="title_placeholder">Title</string>
     <string name="note_placeholder">Note</string>
     <string name="last_modification_date">Last modification date</string>
-    <string name="note_actions">Note actions</string>
+    <string name="note_actions_save">Add new note</string>
+    <string name="note_actions_edit">Edit note</string>
+    <string name="note_actions_remove">Delete note</string>
+    <string name="note_actions_more">Delete note</string>
     <string name="note_types">note_types</string>
     <string name="checkbox_notes_button">Checkbox notes button</string>
     <string name="draw_notes_button">Draw notes button</string>
     <string name="micro_notes_button">Micro notes button</string>
     <string name="photo_notes_button">Photo notes button</string>
     <string name="note_picture">Note picture</string>
+    <string name="action_sync">Sync Firebase</string>
 
 
     <!--EventActivity-->
@@ -267,6 +271,7 @@
     <string name="image_description" />
     <string name="action_settings">Setting</string>
     <string name="action_feedback">Feedback us !</string>
+    <string name="blank_null"></string>
 
     <!--Daily view-->
     <string name="time_12am">12 am</string>

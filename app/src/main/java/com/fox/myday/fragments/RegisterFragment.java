@@ -38,8 +38,9 @@ public class RegisterFragment extends Fragment implements OnRegisterListener, Vi
                              Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_register, container, false);
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        user.reload();
+        if(mAuth.getCurrentUser() != null){
+            mAuth.getCurrentUser().reload();
+        }
         initViews(inflate);
         btnRegister.setOnClickListener(this);
         return inflate;

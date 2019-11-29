@@ -2,16 +2,16 @@ package com.fox.myday.interfaces;
 
 public interface NoteView {
 
-    void onCreateNoteSuccess();
+    void onLoadNoteFromFirebaseSuccess();
 
-    void onCreateNoteFail();
+    void onLoadNoteFromFirebaseFail();
 
-    void onEditNoteSuccess();
+    void onSaveToFireBaseSuccess();
 
-    void onEditNoteFail();
+    void onSaveToFirebaseFail();
 
-    void onDeleteSuccess();
+    void onDeleteFromFirebaseSuccess();
 
-    void onDeleteFail();
+    void onDeleteFromFirebaseFail();
 
 }
