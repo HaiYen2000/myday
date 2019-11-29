@@ -140,7 +140,6 @@ public abstract class AbstractWidgetProvider extends AppWidgetProvider {
             return new Weather();
         }
     }
-
     protected String localize(SharedPreferences sp, Context context, String preferenceKey,
                               String defaultValueKey) {
         return WeatherActivity.localize(sp, context, preferenceKey, defaultValueKey);

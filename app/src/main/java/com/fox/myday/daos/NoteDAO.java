@@ -24,31 +24,31 @@ public class NoteDAO extends Constants {
         this.dbHelper = dbHelper;
     }
 
-    public long insertNote(Note note){
+    public long insertNote(Note note) {
 
         long result = -1;
         ContentValues cv = new ContentValues();
-        cv.put(NOTE_ID,note.NOTE_ID);
-        cv.put(NOTE_TITLE,note.NOTE_TITLE);
-        cv.put(NOTE_CONTENT,note.NOTE_CONTENT);
-        cv.put(NOTE_DATE,note.NOTE_DATE);
+        cv.put(NOTE_ID, note.NOTE_ID);
+        cv.put(NOTE_TITLE, note.NOTE_TITLE);
+        cv.put(NOTE_CONTENT, note.NOTE_CONTENT);
+        cv.put(NOTE_DATE, note.NOTE_DATE);
 
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        result = sqLiteDatabase.insert(NOTE_TABLE,null,cv);
+        result = sqLiteDatabase.insert(NOTE_TABLE, null, cv);
         sqLiteDatabase.close();
 
         return result;
 
     }
 
-    public long updateNote(Note note){
+    public long updateNote(Note note) {
 
         long result = -1;
         ContentValues cv = new ContentValues();
-        cv.put(NOTE_ID,note.NOTE_ID);
-        cv.put(NOTE_TITLE,note.NOTE_TITLE);
-        cv.put(NOTE_CONTENT,note.NOTE_CONTENT);
-        cv.put(NOTE_DATE,note.NOTE_DATE);
+        cv.put(NOTE_ID, note.NOTE_ID);
+        cv.put(NOTE_TITLE, note.NOTE_TITLE);
+        cv.put(NOTE_CONTENT, note.NOTE_CONTENT);
+        cv.put(NOTE_DATE, note.NOTE_DATE);
 
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         result = sqLiteDatabase.update(NOTE_TABLE, cv, NOTE_ID + "= ?", new String[]{String.valueOf(note.NOTE_ID)});
@@ -58,39 +58,39 @@ public class NoteDAO extends Constants {
 
     }
 
-    public long deleteNote(int id){
+    public long deleteNote(int id) {
 
         long result = -1;
 
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        result = sqLiteDatabase.delete(NOTE_TABLE,NOTE_ID + " = ?",new String[]{String.valueOf(id)});
+        result = sqLiteDatabase.delete(NOTE_TABLE, NOTE_ID + " = ?", new String[]{String.valueOf(id)});
         sqLiteDatabase.close();
 
         return result;
 
     }
 
-    public List<Note> getAllNote(){
+    public List<Note> getAllNote() {
 
         List<Note> users = new ArrayList<>();
 
         String QUERY = "SELECT * FROM " + NOTE_TABLE;
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(QUERY,null);
+        Cursor cursor = sqLiteDatabase.rawQuery(QUERY, null);
 
-        if(cursor != null){
+        if (cursor != null) {
 
-            if(cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
 
                 cursor.moveToFirst();
-                while(!cursor.isAfterLast()){
+                while (!cursor.isAfterLast()) {
 
                     int NOTE_ID_ = cursor.getInt(cursor.getColumnIndex(NOTE_ID));
                     String NOTE_TITLE_ = cursor.getString(cursor.getColumnIndex(NOTE_TITLE));
                     String NOTE_CONTENT_ = cursor.getString(cursor.getColumnIndex(NOTE_CONTENT));
                     String NOTE_DATE_ = cursor.getString(cursor.getColumnIndex(NOTE_DATE));
 
-                    Note note = new Note(NOTE_ID_,NOTE_TITLE_,NOTE_CONTENT_,NOTE_DATE_);
+                    Note note = new Note(NOTE_ID_, NOTE_TITLE_, NOTE_CONTENT_, NOTE_DATE_);
 
                     users.add(note);
                     cursor.moveToNext();
@@ -106,7 +106,8 @@ public class NoteDAO extends Constants {
 
         Note note = null;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(NOTE_TABLE, new String[]{NOTE_ID, NOTE_TITLE, NOTE_CONTENT, NOTE_DATE}, NOTE_ID + " = ? ", new String[]{String.valueOf(id)}, null, null, null, null);
+        Cursor cursor = db.query(NOTE_TABLE, new String[]{NOTE_ID, NOTE_TITLE, NOTE_CONTENT, NOTE_DATE}
+                , NOTE_ID + " = ? ", new String[]{String.valueOf(id)}, null, null, null, null);
 
         // moveToFirst : kiem tra xem cursor co chua du lieu khong, ham nay tra ve gia tri la true or false
         if (cursor != null && cursor.moveToFirst()) {
@@ -126,10 +127,10 @@ public class NoteDAO extends Constants {
         return note;
     }
 
-    public int getPosition(int id){
+    public int getPosition(int id) {
         int pos = 0;
-        for(int i = 0;i < new NoteDAO(dbHelper).getAllNote().size();i++){
-            if(new NoteDAO(dbHelper).getAllNote().get(i).NOTE_ID == id){
+        for (int i = 0; i < new NoteDAO(dbHelper).getAllNote().size(); i++) {
+            if (new NoteDAO(dbHelper).getAllNote().get(i).NOTE_ID == id) {
                 pos = i;
             }
         }

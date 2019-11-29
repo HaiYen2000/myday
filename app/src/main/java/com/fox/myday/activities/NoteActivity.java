@@ -63,9 +63,9 @@ public class NoteActivity extends BaseActivity implements View.OnClickListener {
     private void initData(){
         Note note = new Note(1,"그남자는 베트남사람입니다.","abc", Calendar.getInstance().getTime().toString());
         Note note1 = new Note(2,"Test","그남자는 베트남사람입니다.", Calendar.getInstance().getTime().toString());
-        Note note2 = new Note(3,"nguyên âm","Các bạn thử phiên âm cách đọc các “từ”, “câu” sau đây sang tiếng Việt.", Calendar.getInstance().getTime().toString());
-        Note note3 = new Note(4,"Test","Hệ thống chữ viết Hangeul yêu cầu các âm tiết phải được hình thành bởi sự kết hợp giữa các nguyên âm & phụ âm.", Calendar.getInstance().getTime().toString());
-        Note note4 = new Note(5,"Hệ thống chữ viết Hangeul ","Các bạn thử phiên âm cách đọc các “từ”, “câu” sau đây sang tiếng Việt.", Calendar.getInstance().getTime().toString());
+        Note note2 = new Note(3,"nguyên âm","Các bạn thử pệt.", Calendar.getInstance().getTime().toString());
+        Note note3 = new Note(4,"Test","Hệ thống chữ viế.", Calendar.getInstance().getTime().toString());
+        Note note4 = new Note(5,"Hệ thống chữ viết Hangeul ","Các bạn ếng Việt.", Calendar.getInstance().getTime().toString());
         Note note5 = new Note(6,"sự kết hợp giữa các nguyên âm & phụ âm","", Calendar.getInstance().getTime().toString());
 
         mNotes.add(note);

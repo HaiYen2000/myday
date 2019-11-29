@@ -25,115 +25,60 @@ public class EventDAO extends Constants {
         this.dbHelper = dbHelper;
     }
 
-    public long insertEvent(Event event){
+    public void SaveEvent(String event, String time, String date, String month, String year, String notify, SQLiteDatabase database) {
+        ContentValues contentValues = new ContentValues();
 
-        long result = -1;
-        ContentValues cv = new ContentValues();
-        cv.put(EVENT_ID,event.EVENT_ID);
-        cv.put(EVENT_TITLE,event.EVENT_TITLE);
-        cv.put(EVENT_CONTENT,event.EVENT_CONTENT);
-        cv.put(EVENT_LOCATION,event.EVENT_LOCATION);
-
-        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        result = sqLiteDatabase.insert(EVENT_TABLE,null,cv);
-        sqLiteDatabase.close();
-
-        return result;
+        contentValues.put(DATE, date);
+        contentValues.put(TIME, time);
+        contentValues.put(MONTH, month);
+        contentValues.put(YEAR, year);
+        contentValues.put(EVENT, event);
+        contentValues.put(Notify, notify);
+        database.insert(EVENT_TABLE, null, contentValues);
 
     }
 
-    public long updateEvent(Event event){
-
-        long result = -1;
-        ContentValues cv = new ContentValues();
-        cv.put(EVENT_ID,event.EVENT_ID);
-        cv.put(EVENT_TITLE,event.EVENT_TITLE);
-        cv.put(EVENT_CONTENT,event.EVENT_CONTENT);
-        cv.put(EVENT_LOCATION,event.EVENT_LOCATION);
-
-        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        result = sqLiteDatabase.update(EVENT_TABLE, cv, EVENT_ID + "= ?", new String[]{String.valueOf(event.EVENT_ID)});
-        sqLiteDatabase.close();
-
-        return result;
+    public Cursor readIDEvents(String date, String event, String time, SQLiteDatabase database) {
+        String[] Projections = {ID, Notify};
+        String Selection = DATE + " =? and " + EVENT + " =? and "
+                + TIME + " = ? ";
+        String[] selectionArgs = {date, event, time};
+        return database.query(EVENT_TABLE, Projections, Selection, selectionArgs, null, null, null);
 
     }
 
-    public long deleteEvent(int id){
-
-        long result = -1;
-
-        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        result = sqLiteDatabase.delete(EVENT_TABLE,EVENT_ID + " = ?",new String[]{String.valueOf(id)});
-        sqLiteDatabase.close();
-
-        return result;
+    public Cursor readEvents(String date, SQLiteDatabase database) {
+        String[] Projections = {EVENT, TIME, DATE,
+                MONTH, YEAR};
+        String Selection = DATE + "=?";
+        String[] selectionArgs = {date};
+        return database.query(EVENT_TABLE, Projections, Selection, selectionArgs, null, null, null);
 
     }
 
-    public List<Event> getAllEvent(){
+    public Cursor readEventsperMonth(String month, String year, SQLiteDatabase database) {
+        String[] Projections = {EVENT, TIME, DATE, MONTH, YEAR};
+        String Selection = MONTH + " =? and " + YEAR + " =? ";
+        String[] selectionArgs = {month, year};
+        return database.query(EVENT_TABLE, Projections, Selection, selectionArgs, null, null, null);
 
-        List<Event> users = new ArrayList<>();
-
-        String QUERY = "SELECT * FROM " + EVENT_TABLE;
-        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(QUERY,null);
-
-        if(cursor != null){
-
-            if(cursor.getCount() > 0){
-
-                cursor.moveToFirst();
-                while(!cursor.isAfterLast()){
-
-                    int EVENT_ID_ = cursor.getInt(cursor.getColumnIndex(EVENT_ID));
-                    String EVENT_TITLE_ = cursor.getString(cursor.getColumnIndex(EVENT_TITLE));
-                    String EVENT_CONTENT_ = cursor.getString(cursor.getColumnIndex(EVENT_CONTENT));
-                    String EVENT_LOCATION_ = cursor.getString(cursor.getColumnIndex(EVENT_LOCATION));
-
-                    Event event = new Event(EVENT_ID_,EVENT_TITLE_,EVENT_CONTENT_,EVENT_LOCATION_);
-
-                    users.add(event);
-                    cursor.moveToNext();
-                }
-                cursor.close();
-                sqLiteDatabase.close();
-            }
-        }
-        return users;
     }
 
-    public Event getEvent(int id) {
+    public void deleteEvent(String event, String date, String time, SQLiteDatabase database) {
+        String selection = EVENT + " =? and " + DATE + " = ? and " + TIME + " =? ";
+        String[] selectionArg = {event, date, time};
 
-        Event event = null;
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(EVENT_TABLE, new String[]{EVENT_ID, EVENT_TITLE, EVENT_CONTENT, EVENT_LOCATION}, EVENT_ID + " = ? ", new String[]{String.valueOf(id)}, null, null, null, null);
-
-        // moveToFirst : kiem tra xem cursor co chua du lieu khong, ham nay tra ve gia tri la true or false
-        if (cursor != null && cursor.moveToFirst()) {
-
-            int id_ = cursor.getInt(cursor.getColumnIndex(EVENT_ID));
-
-            String title_ = cursor.getString(cursor.getColumnIndex(EVENT_TITLE));
-
-            String content_ = cursor.getString(cursor.getColumnIndex(EVENT_CONTENT));
-
-            String location_ = cursor.getString(cursor.getColumnIndex(EVENT_LOCATION));
-
-            // khoi tao user voi cac gia tri lay duoc
-            event = new Event(id_, title_, content_, location_);
-        }
-        cursor.close();
-        return event;
+        database.delete(EVENT_TABLE, selection, selectionArg);
     }
 
-    public int getPosition(int id){
-        int pos = 0;
-        for(int i = 0;i < new EventDAO(dbHelper).getAllEvent().size();i++){
-            if(new EventDAO(dbHelper).getAllEvent().get(i).EVENT_ID == id){
-                pos = i;
-            }
-        }
-        return pos;
+    public void updateEvent(String date, String event, String time, String notify, SQLiteDatabase database) {
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(Notify, notify);
+        String Selection = DATE + " =? and " + EVENT + " =? and "
+                + TIME + " =? ";
+        String[] selectionArgs = {date, event, time};
+        database.update(EVENT_TABLE, contentValues, Selection, selectionArgs);
+
     }
 }

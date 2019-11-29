@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".fragments.MonthlyViewFragment">
 
-    <CalendarView
-        android:id="@+id/monthlyview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<!--    <CalendarView-->
+<!--        android:id="@+id/monthlyview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
 </LinearLayout>

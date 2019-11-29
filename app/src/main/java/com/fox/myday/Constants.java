@@ -33,22 +33,38 @@ public class Constants {
 
     // Time in milliseconds; only reload weather if last update is longer ago than this value
     public static final int NO_UPDATE_REQUIRED_THRESHOLD = 300000;
-    //Event Table
-    public static final String EVENT_TABLE = "event";
-    //Column event
 
-    public static final String EVENT_ID = "id";
-    public static final String EVENT_TITLE = "title";
-    public static final String EVENT_CONTENT = "content";
-    public static final String EVENT_LOCATION= "created_location";
+
+
+    //Event Table
+    public static final String EVENT_TABLE = "events";
+    //Column event
+    public static final String EVENT = "event";
+    public static final String TIME = "time";
+    public static final String DATE = "date";
+    public static final String MONTH = "month";
+    public static final String YEAR = "year";
+
+    public static final String ID = "ID";
+    public static final String Notify = "notify";
     //Query create event(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_location (text not null)
 
-    public static final String CREATE_EVENT_TABLE = "CREATE TABLE " + EVENT_TABLE + "(" +
-            "" + EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "" + EVENT_TITLE + " NVARCHAR(255)," +
-            "" + EVENT_CONTENT + " NCHAR(255) NVARCHAR(255) NOT NULL," +
-            "" + EVENT_LOCATION + " TEXT NOT NULL" +
-            ")";
+    //    public static final String CREATE_EVENT_TABLE = "CREATE TABLE " +
+//            EVENT_TABLE + "(" +
+//            "" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+//            "" + EVENT + " TEXT," +
+//            "" + TIME + " NCHAR(255) NVARCHAR(255) NOT NULL," +
+//            "" + DATE + " TEXT NOT NULL" +
+//            ")";
+//
+    public static final String CREATE_EVENTS_TABLE = "create table " +
+            EVENT_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
+
+            + EVENT + " TEXT," + TIME + " TEXT,"
+            + DATE + " TEXT," + MONTH + " TEXT,"
+            + YEAR + " TEXT," + Notify + " TEXT)";
+
+
     public static final String API_KEY = BuildConfig.API_KEY;
 
     public static int ORDER_REGISTER_STATE = 0;
