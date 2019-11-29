@@ -5,7 +5,7 @@
     tools:context=".activities.NoteActivity">
 
     <item
-        android:id="@+id/action_sync"
+        android:id="@+id/action_edit"
         android:icon="@drawable/ic_icon_edit"
         android:title="@string/note_actions_edit"
         app:showAsAction="always" />

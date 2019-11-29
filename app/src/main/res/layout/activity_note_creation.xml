@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
 
-        xmlns:tools="http://schemas.android.com/tools"
         android:background="@color/colorAppBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <LinearLayout
-            android:id="@+id/simple_note_creation_linear_layout"
+            android:id="@+id/linearLayoutNoteContent"
             android:background="@color/colorNoteDefault"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -224,7 +224,7 @@
             android:layout_height="1dp"
             android:background="#60545454" />
 
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <TableLayout
             android:id="@+id/bottom_toolbar"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
@@ -251,14 +251,12 @@
                     android:id="@+id/tvDateModify"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorHint"
                     android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
                     android:text="@string/last_modification_date"
-                    android:layout_marginLeft="10dp" />
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorHint" />
 
                 <ImageButton
                     android:id="@+id/btnDelete"

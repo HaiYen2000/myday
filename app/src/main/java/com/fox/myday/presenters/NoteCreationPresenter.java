@@ -36,7 +36,9 @@ public class NoteCreationPresenter {
         },NAVIGATE_TIME_OUT);
     }
 
-    public void onEditNote(int id, String title, String content, String created_date){
+    public void onEditNote(int pos, String title, String content){
+        int id = noteDAO.getAllNote().get(pos).NOTE_ID;
+        String created_date = noteDAO.getAllNote().get(pos).NOTE_CREATED_DATE;
         Note note = new Note(id, title, content, created_date, noteDAO.getCurrentTime());
         long result = noteDAO.updateNote(note);
         if(result != -1){
@@ -65,8 +67,9 @@ public class NoteCreationPresenter {
         edtContent.setText(current_modify_note.NOTE_CONTENT);
         if(current_modify_note.NOTE_MODIFIED_DATE != null){
             tvDateModify.setText("Last modification on " + noteDAO.getModifiedDayOfWeek() +", " + current_modify_note.NOTE_MODIFIED_DATE);
+        }else{
+            tvDateModify.setText("Create on " + noteDAO.getCreatedDayOfWeek() + ", " + current_modify_note.NOTE_CREATED_DATE);
         }
-        tvDateModify.setText("Create on " + noteDAO.getCreatedDayOfWeek() + ", " + current_modify_note.NOTE_CREATED_DATE);
     }
 
 }

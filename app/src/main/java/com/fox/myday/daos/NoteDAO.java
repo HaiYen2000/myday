@@ -161,7 +161,7 @@ public class NoteDAO extends Constants {
                 + " WHEN 4 THEN 'Thursday'"
                 + " WHEN 5 THEN 'Friday'"
                 + " WHEN 6 THEN 'Saturday'"
-                + " END AS DAYOFWEEK";
+                + " END AS 'DAYOFWEEK' FROM " + NOTE_TABLE;
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(QUERY, null);
         if(cursor != null){

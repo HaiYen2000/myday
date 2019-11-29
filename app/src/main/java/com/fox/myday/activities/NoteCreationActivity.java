@@ -1,15 +1,14 @@
 package com.fox.myday.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,7 +23,7 @@ import com.fox.myday.presenters.NoteCreationPresenter;
 
 public class NoteCreationActivity extends AppCompatActivity implements View.OnClickListener, NoteCreationView {
 
-    private LinearLayout linearLayoutColor;
+    private LinearLayout linearLayoutColor, linearLayoutNoteContent;
     private EditText edtTitle;
     private EditText edtContent;
     private ImageButton btnSave;
@@ -65,6 +64,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         btnMore = findViewById(R.id.btnMore);
         noteCreationPresenter = new NoteCreationPresenter(this, NoteCreationActivity.this);
         linearLayoutColor = findViewById(R.id.linearLayoutColor);
+        linearLayoutNoteContent = findViewById(R.id.linearLayoutNoteContent);
     }
 
 
@@ -75,6 +75,18 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
             return true;
         }
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.action_edit){
+            String title = edtTitle.getText().toString().trim();
+            String content = edtContent.getText().toString().trim();
+            int position = getIntent().getExtras().getInt("position");
+            noteCreationPresenter.onEditNote(position, title, content);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -145,6 +157,6 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onUpdateState() {
-
+        linearLayoutNoteContent.clearFocus();
     }
 }
