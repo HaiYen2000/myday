@@ -3,11 +3,8 @@ package com.fox.myday.base;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 
+import androidx.annotation.Nullable;
 import com.fox.myday.R;
 import com.fox.myday.utils.UI;
 import com.google.android.material.navigation.NavigationView;
@@ -18,13 +15,10 @@ public class WeatherBaseActivity extends BaseActivity implements NavigationView.
     protected boolean darkTheme;
     protected boolean blackTheme;
 
-    //Init Navigation Drawer
-    public DrawerLayout drawerLayout;
-    public NavigationView navigationView;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -36,6 +30,8 @@ public class WeatherBaseActivity extends BaseActivity implements NavigationView.
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+=======
+>>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         setTheme(theme = UI.getTheme(prefs.getString("theme", "fresh")));
         darkTheme = theme == R.style.AppTheme_NoActionBar_Dark ||

@@ -99,6 +99,7 @@
     <color name="colorBlack">#000000</color>
         <!-- Text colors -->
     <color name="colorHint">#afafaf</color>
+    <color name="title_color">#d1395c</color>
 
 
     <!--Setting colors-->

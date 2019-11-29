@@ -1,11 +1,11 @@
 package com.fox.myday.activities;
 
 import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -19,34 +19,57 @@ import com.fox.myday.R;
 import com.fox.myday.adapters.StaggeredRecycleViewNoteAdapter;
 import com.fox.myday.base.BaseActivity;
 import com.fox.myday.base.GridSpacingItemDecoration;
+import com.fox.myday.databinding.ActivityNoteBinding;
+import com.fox.myday.interfaces.NoteView;
+import com.fox.myday.listeners.RecyclerViewClickListener;
+import com.fox.myday.listeners.RecyclerViewTouchListener;
 import com.fox.myday.models.Note;
+import com.fox.myday.presenters.NotePresenter;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
 import static com.fox.myday.Constants.NUM_COLUMNS;
 
-public class NoteActivity extends BaseActivity implements View.OnClickListener {
+public class NoteActivity extends BaseActivity implements NoteView,View.OnClickListener {
 
     private RecyclerView recyclerView;
     private List<Note> mNotes;
     private StaggeredRecycleViewNoteAdapter staggeredRecycleViewNoteAdapter;
     private Button createNote;
+    private NotePresenter notePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //inflate your activity layout here!
-        @SuppressLint("InflateParams")
-        View contentView = inflater.inflate(R.layout.activity_note, null, false);
+        ActivityNoteBinding activityNoteBinding = DataBindingUtil.inflate(inflater, R.layout.activity_note, null, false);
+        View contentView = activityNoteBinding.getRoot();
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.nav_note);
         setTitle(R.string.menu_note);
         initViews();
         initRecycleView();
+
+        recyclerView.addOnItemTouchListener(new RecyclerViewTouchListener(getApplicationContext(), recyclerView, new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int pos) {
+                Intent intent = new Intent(NoteActivity.this, NoteCreationActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("action","modify");
+                bundle.putInt("position",pos);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View view, int pos) {
+
+            }
+        }));
+
         // Drag and drop
         ItemTouchHelper ith = new ItemTouchHelper(_ithCallback);
         ith.attachToRecyclerView(recyclerView);
@@ -58,9 +81,11 @@ public class NoteActivity extends BaseActivity implements View.OnClickListener {
         mNotes = new ArrayList<>();
         recyclerView = findViewById(R.id.note_recycle_view);
         createNote = findViewById(R.id.create_new_note);
+        notePresenter = new NotePresenter(this, NoteActivity.this);
     }
 
     private void initData(){
+<<<<<<< HEAD
         Note note = new Note(1,"그남자는 베트남사람입니다.","abc", Calendar.getInstance().getTime().toString());
         Note note1 = new Note(2,"Test","그남자는 베트남사람입니다.", Calendar.getInstance().getTime().toString());
         Note note2 = new Note(3,"nguyên âm","Các bạn thử pệt.", Calendar.getInstance().getTime().toString());
@@ -75,6 +100,9 @@ public class NoteActivity extends BaseActivity implements View.OnClickListener {
         mNotes.add(note4);
         mNotes.add(note5);
 
+=======
+        mNotes = notePresenter.onLoadAllNote();
+>>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
     }
 
     private void initRecycleView(){
@@ -126,17 +154,52 @@ public class NoteActivity extends BaseActivity implements View.OnClickListener {
             }
         }
     }
+
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.create_new_note){
             Intent intent = new Intent(NoteActivity.this, NoteCreationActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("action","create");
+            intent.putExtras(bundle);
             startActivity(intent);
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_note, menu);
         return true;
     }
+
+    @Override
+    public void onLoadNoteFromFirebaseSuccess() {
+
+    }
+
+    @Override
+    public void onLoadNoteFromFirebaseFail() {
+
+    }
+
+    @Override
+    public void onSaveToFireBaseSuccess() {
+
+    }
+
+    @Override
+    public void onSaveToFirebaseFail() {
+
+    }
+
+    @Override
+    public void onDeleteFromFirebaseSuccess() {
+
+    }
+
+    @Override
+    public void onDeleteFromFirebaseFail() {
+
+    }
+
 }

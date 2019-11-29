@@ -4,24 +4,33 @@ public class Constants {
 
     public static final boolean isCreated = true;
 
+    //Config the database
+    public static final String DATABASE_NAME = "myday.db";
+    public static final int DATABASE_VERSION = 1;
+
     //Note Table
     public static final String NOTE_TABLE = "note";
     //Column
     public static final String NOTE_ID = "id";
     public static final String NOTE_TITLE = "title";
     public static final String NOTE_CONTENT = "content";
-    public static final String NOTE_DATE = "created_date";
-    //Query create note(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_date (text not null)
+    public static final String NOTE_CREATED_DATE = "created_date";
+    public static final String NOTE_MODIFIED_DATE = "modified_date";
+
+    //Query create note(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_date (text not null), modified_date(text))
     public static final String CREATE_NOTE_TABLE = "CREATE TABLE " + NOTE_TABLE + "(" +
             "" + NOTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "" + NOTE_TITLE + " NVARCHAR(255)," +
-            "" + NOTE_CONTENT + " NCHAR(255) NVARCHAR(255) NOT NULL," +
-            "" + NOTE_DATE + " TEXT NOT NULL" +
+            "" + NOTE_TITLE + " TEXT," +
+            "" + NOTE_CONTENT + " TEXT NOT NULL," +
+            "" + NOTE_CREATED_DATE + " TEXT NOT NULL," +
+            "" + NOTE_MODIFIED_DATE + " TEXT" +
             ")";
 
     public static final int NUM_COLUMNS = 2;
 
     public static int SPLASH_TIME_OUT = 8600;
+    public static int FRAGMENT_TIME_OUT = 2000;
+    public static int NAVIGATE_TIME_OUT = 1500;
 
     public static final String DEFAULT_CITY = "Hanoi";
     public static final String DEFAULT_LAT = "21.0245";
@@ -49,6 +58,7 @@ public class Constants {
     public static final String Notify = "notify";
     //Query create event(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_location (text not null)
 
+<<<<<<< HEAD
     //    public static final String CREATE_EVENT_TABLE = "CREATE TABLE " +
 //            EVENT_TABLE + "(" +
 //            "" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -64,10 +74,23 @@ public class Constants {
             + DATE + " TEXT," + MONTH + " TEXT,"
             + YEAR + " TEXT," + Notify + " TEXT)";
 
+=======
+    public static final String CREATE_EVENT_TABLE = "CREATE TABLE " + EVENT_TABLE + "(" +
+            "" + EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "" + EVENT_TITLE + " TEXT," +
+            "" + EVENT_CONTENT + " TEXT NOT NULL," +
+            "" + EVENT_LOCATION + " TEXT NOT NULL" +
+            ")";
+>>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
 
     public static final String API_KEY = BuildConfig.API_KEY;
 
     public static int ORDER_REGISTER_STATE = 0;
     public static int ORDER_LOGIN_STATE = 1;
+
+    public static String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
+
+    //Maximum sound stream
+    public static final int MAX_STREAM = 5;
 
 }

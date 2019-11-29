@@ -40,10 +40,10 @@ public class UserAuthenticationActivity extends NoStatusBarActivity {
 
         binding.loginFragment.setRotation(-90);
 
-        binding.btnLogin.setOnSignUpListener(topSignUpFragment);
-        binding.btnLogin.setOnLoginListener(topLoginFragment);
+        binding.btnAuthenticate.setOnSignUpListener(topSignUpFragment);
+        binding.btnAuthenticate.setOnLoginListener(topLoginFragment);
 
-        binding.btnLogin.setOnButtonSwitched(isLogin -> {
+        binding.btnAuthenticate.setOnButtonSwitched(isLogin -> {
             binding.getRoot()
                     .setBackgroundColor(ContextCompat.getColor(
                             this,
@@ -88,7 +88,7 @@ public class UserAuthenticationActivity extends NoStatusBarActivity {
         }
 
         isLogin = !isLogin;
-        binding.btnLogin.startAnimation();
+        binding.btnAuthenticate.startAnimation();
     }
 
 }
