@@ -28,17 +28,10 @@ public class NoteDAO extends Constants {
 
         long result = -1;
         ContentValues cv = new ContentValues();
-<<<<<<< HEAD
-        cv.put(NOTE_ID, note.NOTE_ID);
-        cv.put(NOTE_TITLE, note.NOTE_TITLE);
-        cv.put(NOTE_CONTENT, note.NOTE_CONTENT);
-        cv.put(NOTE_DATE, note.NOTE_DATE);
-=======
         //cv.put(NOTE_ID,note.NOTE_ID);
         cv.put(NOTE_TITLE,note.NOTE_TITLE);
         cv.put(NOTE_CONTENT,note.NOTE_CONTENT);
         cv.put(NOTE_CREATED_DATE,note.NOTE_CREATED_DATE);
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
 
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         result = sqLiteDatabase.insert(NOTE_TABLE, null, cv);
@@ -49,28 +42,17 @@ public class NoteDAO extends Constants {
     }
 
     public long updateNote(Note note) {
-
         long result = -1;
         ContentValues cv = new ContentValues();
-<<<<<<< HEAD
-        cv.put(NOTE_ID, note.NOTE_ID);
-        cv.put(NOTE_TITLE, note.NOTE_TITLE);
-        cv.put(NOTE_CONTENT, note.NOTE_CONTENT);
-        cv.put(NOTE_DATE, note.NOTE_DATE);
-
-=======
         cv.put(NOTE_ID,note.NOTE_ID);
         cv.put(NOTE_TITLE,note.NOTE_TITLE);
         cv.put(NOTE_CONTENT,note.NOTE_CONTENT);
         cv.put(NOTE_CREATED_DATE,note.NOTE_CREATED_DATE);
         cv.put(NOTE_MODIFIED_DATE,note.NOTE_MODIFIED_DATE);
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         result = sqLiteDatabase.update(NOTE_TABLE, cv, NOTE_ID + "= ?", new String[]{String.valueOf(note.NOTE_ID)});
         sqLiteDatabase.close();
-
         return result;
-
     }
 
     public long deleteNote(int id) {
@@ -105,13 +87,7 @@ public class NoteDAO extends Constants {
                     String NOTE_CONTENT_ = cursor.getString(cursor.getColumnIndex(NOTE_CONTENT));
                     String NOTE_CREATED_DATE_ = cursor.getString(cursor.getColumnIndex(NOTE_CREATED_DATE));
                     String NOTE_MODIFIED_DATE_ = cursor.getString(cursor.getColumnIndex(NOTE_MODIFIED_DATE));
-
-<<<<<<< HEAD
-                    Note note = new Note(NOTE_ID_, NOTE_TITLE_, NOTE_CONTENT_, NOTE_DATE_);
-=======
                     Note note = new Note(NOTE_ID_,NOTE_TITLE_,NOTE_CONTENT_,NOTE_CREATED_DATE_,NOTE_MODIFIED_DATE_);
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
-
                     users.add(note);
                     cursor.moveToNext();
                 }
@@ -202,25 +178,13 @@ public class NoteDAO extends Constants {
 
         Note note = null;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-<<<<<<< HEAD
-        Cursor cursor = db.query(NOTE_TABLE, new String[]{NOTE_ID, NOTE_TITLE, NOTE_CONTENT, NOTE_DATE}
-                , NOTE_ID + " = ? ", new String[]{String.valueOf(id)}, null, null, null, null);
-=======
         Cursor cursor = db.query(NOTE_TABLE, new String[]{NOTE_ID, NOTE_TITLE, NOTE_CONTENT, NOTE_CREATED_DATE, NOTE_MODIFIED_DATE}, NOTE_ID + " = ? ", new String[]{String.valueOf(id)}, null, null, null, null);
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
-
         if (cursor != null && cursor.moveToFirst()) {
-
             int id_ = cursor.getInt(cursor.getColumnIndex(NOTE_ID));
-
             String title_ = cursor.getString(cursor.getColumnIndex(NOTE_TITLE));
-
             String content_ = cursor.getString(cursor.getColumnIndex(NOTE_CONTENT));
-
             String created_date_ = cursor.getString(cursor.getColumnIndex(NOTE_CREATED_DATE));
-
             String modified_date_ = cursor.getString(cursor.getColumnIndex(NOTE_MODIFIED_DATE));
-
             // khoi tao user voi cac gia tri lay duoc
             note = new Note(id_, title_, content_, created_date_,modified_date_);
         }

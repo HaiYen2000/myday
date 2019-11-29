@@ -1,7 +1,6 @@
 package com.fox.myday;
 
 public class Constants {
-
     public static final boolean isCreated = true;
 
     //Config the database
@@ -43,8 +42,6 @@ public class Constants {
     // Time in milliseconds; only reload weather if last update is longer ago than this value
     public static final int NO_UPDATE_REQUIRED_THRESHOLD = 300000;
 
-
-
     //Event Table
     public static final String EVENT_TABLE = "events";
     //Column event
@@ -55,33 +52,15 @@ public class Constants {
     public static final String YEAR = "year";
 
     public static final String ID = "ID";
-    public static final String Notify = "notify";
-    //Query create event(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_location (text not null)
+    public static final String Notify = "notify"; //Hăng số bao giờ cũng viết hoa nhé
+    //Query create event(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_location (text not null))
 
-<<<<<<< HEAD
-    //    public static final String CREATE_EVENT_TABLE = "CREATE TABLE " +
-//            EVENT_TABLE + "(" +
-//            "" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-//            "" + EVENT + " TEXT," +
-//            "" + TIME + " NCHAR(255) NVARCHAR(255) NOT NULL," +
-//            "" + DATE + " TEXT NOT NULL" +
-//            ")";
-//
     public static final String CREATE_EVENTS_TABLE = "create table " +
             EVENT_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
 
             + EVENT + " TEXT," + TIME + " TEXT,"
             + DATE + " TEXT," + MONTH + " TEXT,"
             + YEAR + " TEXT," + Notify + " TEXT)";
-
-=======
-    public static final String CREATE_EVENT_TABLE = "CREATE TABLE " + EVENT_TABLE + "(" +
-            "" + EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "" + EVENT_TITLE + " TEXT," +
-            "" + EVENT_CONTENT + " TEXT NOT NULL," +
-            "" + EVENT_LOCATION + " TEXT NOT NULL" +
-            ")";
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
 
     public static final String API_KEY = BuildConfig.API_KEY;
 
@@ -92,5 +71,4 @@ public class Constants {
 
     //Maximum sound stream
     public static final int MAX_STREAM = 5;
-
 }

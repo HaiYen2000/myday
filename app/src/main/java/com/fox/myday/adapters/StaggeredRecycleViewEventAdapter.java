@@ -34,8 +34,8 @@ public class StaggeredRecycleViewEventAdapter extends RecyclerView.Adapter<Event
     @Override
     public void onBindViewHolder(@NonNull EventHolder holder, int position) {
         Event event = mEvents.get(position);
-        holder.tveventtitle.setText(event.EVENT_TITLE);
-        holder.tveventcontent.setText(event.EVENT_CONTENT);
+//        holder.tveventtitle.setText(event.EVENT_TITLE);
+//        holder.tveventcontent.setText(event.EVENT_CONTENT);
     }
 
     @Override

@@ -18,10 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.fox.myday.R;
 import com.fox.myday.activities.CalendarActivity;
-<<<<<<< HEAD
-=======
 import com.fox.myday.interfaces.LoginView;
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
 import com.fox.myday.listeners.OnLoginListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,7 +41,6 @@ public class LoginFragment extends Fragment implements OnLoginListener, View.OnC
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_login, container, false);
-<<<<<<< HEAD
         Intent intent = new Intent(getContext(), CalendarActivity.class);
         startActivity(intent);
         inflate.findViewById(R.id.forgot_password).setOnClickListener(
@@ -54,7 +50,6 @@ public class LoginFragment extends Fragment implements OnLoginListener, View.OnC
 
                     }
                 });
-=======
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
             mAuth.getCurrentUser().reload();
@@ -62,7 +57,6 @@ public class LoginFragment extends Fragment implements OnLoginListener, View.OnC
         initViews(inflate);
         tvRecoverPassword.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
->>>>>>> 08fa8e68fcfb27cc93206bdfa24f8dd425ff1308
         return inflate;
     }
 
