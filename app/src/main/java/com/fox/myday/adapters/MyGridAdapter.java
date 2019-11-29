@@ -20,10 +20,11 @@ public class MyGridAdapter extends ArrayAdapter {
     List<Event> events;
     LayoutInflater inflater;
 
-    public MyGridAdapter(@NonNull Context context, int resource) {
+    public MyGridAdapter(@NonNull Context context, List<Date> dates, Calendar currentDate, List<Event> events) {
         super(context, R.layout.single_cell_layout);
         this.dates = dates;
         this.currentDate = currentDate;
         this.events = events;
+
     }
 }
