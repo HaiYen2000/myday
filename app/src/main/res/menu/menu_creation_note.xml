@@ -5,6 +5,12 @@
     tools:context=".activities.NoteActivity">
 
     <item
+        android:id="@+id/action_remove"
+        android:icon="@drawable/ic_icon_remove"
+        android:title="@string/note_actions_remove"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_edit"
         android:icon="@drawable/ic_icon_edit"
         android:title="@string/note_actions_edit"

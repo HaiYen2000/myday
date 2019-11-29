@@ -35,21 +35,11 @@ public class LoginFragment extends Fragment implements OnLoginListener, View.OnC
     private Button btnLogin;
     private ProgressBar progressBar;
 
-    public LoginFragment() {
-    }
+    public LoginFragment() {}
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_login, container, false);
-        Intent intent = new Intent(getContext(), CalendarActivity.class);
-        startActivity(intent);
-        inflate.findViewById(R.id.forgot_password).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
             mAuth.getCurrentUser().reload();

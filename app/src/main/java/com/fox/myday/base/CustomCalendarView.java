@@ -1,4 +1,4 @@
-package com.fox.myday;
+package com.fox.myday.base;
 
 import android.content.Context;
 import android.widget.LinearLayout;

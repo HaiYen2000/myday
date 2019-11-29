@@ -5,9 +5,16 @@
     tools:context=".activities.NoteActivity">
 
     <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_icon_search"
+        android:title="@string/note_actions_search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
         android:id="@+id/action_sync"
         android:icon="@drawable/firebase_sync_icon"
-        android:title="@string/action_sync"
+        android:title="@string/note_actions_sync"
         app:showAsAction="always" />
 
 </menu>

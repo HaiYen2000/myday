@@ -1,19 +1,23 @@
 package com.fox.myday.activities;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.fox.myday.R;
 import com.fox.myday.adapters.StaggeredRecycleViewNoteAdapter;
@@ -152,6 +156,34 @@ public class NoteActivity extends BaseActivity implements NoteView,View.OnClickL
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_note, menu);
+
+        MenuItem menuItem = menu.findItem( R.id.action_search);
+        SearchManager searchManager = (SearchManager) NoteActivity.this.getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = null;
+        if (menuItem != null) {
+            searchView = (SearchView) menuItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(NoteActivity.this.getComponentName()));
+        }
+        SearchView finalSearchView = searchView;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Toast like print
+                Toast.makeText(NoteActivity.this, "You search " + query, Toast.LENGTH_SHORT).show();
+                if(!finalSearchView.isIconified()) {
+                    finalSearchView.setIconified(true);
+                }
+                menuItem.collapseActionView();
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                //Toast.makeText(NoteActivity.this, "You search " + s, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
         return true;
     }
 

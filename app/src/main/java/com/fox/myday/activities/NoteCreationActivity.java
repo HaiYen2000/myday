@@ -28,7 +28,6 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
     private EditText edtContent;
     private ImageButton btnSave;
     private TextView tvDateModify;
-    private ImageButton btnDelete;
     private ImageButton btnMore;
     private NoteCreationPresenter noteCreationPresenter;
     private String action;
@@ -43,13 +42,10 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         initViews();
         Bundle bundle = getIntent().getExtras();
         action = bundle.getString("action");
-        if(!action.equalsIgnoreCase("create")){
-            btnSave.setEnabled(false);
-            btnDelete.setVisibility(View.VISIBLE);
-            btnDelete.setOnClickListener(this);
+        if (!action.equalsIgnoreCase("create")){
             noteCreationPresenter.onInitDataModify(edtTitle, edtContent, tvDateModify, getIntent().getExtras().getInt("position"));
+            btnSave.setEnabled(false);
         }else{
-            btnDelete.setVisibility(View.GONE);
             btnSave.setOnClickListener(this);
         }
         btnMore.setOnClickListener(this );
@@ -60,7 +56,6 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         edtContent = findViewById(R.id.edtContent);
         btnSave = findViewById(R.id.btnSave);
         tvDateModify = findViewById(R.id.tvDateModify);
-        btnDelete = findViewById(R.id.btnDelete);
         btnMore = findViewById(R.id.btnMore);
         noteCreationPresenter = new NoteCreationPresenter(this, NoteCreationActivity.this);
         linearLayoutColor = findViewById(R.id.linearLayoutColor);
@@ -86,6 +81,10 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
             noteCreationPresenter.onEditNote(position, title, content);
             return true;
         }
+        if(item.getItemId() == R.id.action_remove){
+            onConfirmDeleteNote(getIntent().getExtras().getInt("position"));
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -94,9 +93,6 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         switch (view.getId()){
             case R.id.btnSave:
                 noteCreationPresenter.onCreateNote(edtTitle.getText().toString().trim(), edtContent.getText().toString().trim());
-                break;
-            case R.id.btnDelete:
-                onConfirmDeleteNote(getIntent().getExtras().getInt("position"));
                 break;
             case R.id.btnMore:
                 if(!isOpen){

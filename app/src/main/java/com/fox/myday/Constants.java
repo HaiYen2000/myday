@@ -15,6 +15,10 @@ public class Constants {
     public static final String NOTE_CONTENT = "content";
     public static final String NOTE_CREATED_DATE = "created_date";
     public static final String NOTE_MODIFIED_DATE = "modified_date";
+    public static final String NOTE_IMAGE_URI = "image_uri";
+    public static final String NOTE_BACKGROUND_COLOR = "color";
+    public static final String NOTE_TAG = "tag";
+
 
     //Query create note(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_date (text not null), modified_date(text))
     public static final String CREATE_NOTE_TABLE = "CREATE TABLE " + NOTE_TABLE + "(" +
@@ -52,12 +56,11 @@ public class Constants {
     public static final String YEAR = "year";
 
     public static final String ID = "ID";
-    public static final String Notify = "notify"; //Hăng số bao giờ cũng viết hoa nhé
+    public static final String Notify = "notify";
     //Query create event(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_location (text not null))
 
     public static final String CREATE_EVENTS_TABLE = "create table " +
             EVENT_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
-
             + EVENT + " TEXT," + TIME + " TEXT,"
             + DATE + " TEXT," + MONTH + " TEXT,"
             + YEAR + " TEXT," + Notify + " TEXT)";

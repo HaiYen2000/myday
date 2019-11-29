@@ -224,14 +224,14 @@
     <string name="note_actions_edit">Edit note</string>
     <string name="note_actions_remove">Delete note</string>
     <string name="note_actions_more">Delete note</string>
+    <string name="note_actions_search">Search note</string>
+    <string name="note_actions_sync">Sync Firebase</string>
     <string name="note_types">note_types</string>
     <string name="checkbox_notes_button">Checkbox notes button</string>
     <string name="draw_notes_button">Draw notes button</string>
     <string name="micro_notes_button">Micro notes button</string>
     <string name="photo_notes_button">Photo notes button</string>
     <string name="note_picture">Note picture</string>
-    <string name="action_sync">Sync Firebase</string>
-
 
     <!--EventActivity-->
     <string name="menu_event">Simple events list</string>
