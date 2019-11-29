@@ -27,6 +27,9 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fox.myday.DBOpenHelper;
+import com.fox.myday.DBStructure;
+import com.fox.myday.R;
 import com.fox.myday.adapters.EventRecyclerAdapter;
 import com.fox.myday.adapters.MyGridAdapter;
 import com.fox.myday.base.AlarmReceiver;

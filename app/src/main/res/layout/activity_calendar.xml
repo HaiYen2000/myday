@@ -19,9 +19,9 @@
     <!--        android:layout_margin="20dp"-->
     <!--        android:src="@drawable/ic_playlist_add_black_24dp"-->
     <!--        app:backgroundTint="@color/colorWhite" />-->
-    <com.fox.myday.CustomCalendarView
+    <com.fox.myday.base.CustomCalendarView
         android:layout_width="match_parent"
         android:id="@+id/customcalendaview"
         android:layout_height="match_parent">
-    </com.fox.myday.CustomCalendarView>
+    </com.fox.myday.base.CustomCalendarView>
 </androidx.constraintlayout.widget.ConstraintLayout>
