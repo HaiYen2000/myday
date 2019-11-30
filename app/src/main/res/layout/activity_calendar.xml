@@ -24,4 +24,5 @@
         android:id="@+id/customcalendaview"
         android:layout_height="match_parent">
     </com.fox.myday.base.CustomCalendarView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

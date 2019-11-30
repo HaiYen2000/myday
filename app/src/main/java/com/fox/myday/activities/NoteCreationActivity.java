@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -127,22 +130,22 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onUpdateNoteSuccess() {
-
+        Toast.makeText(this, "Update note successful !", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onUpdateNoteFail() {
-
+        Toast.makeText(this, "Update note fail !", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDeleteSuccess() {
-
+        Toast.makeText(this, "Delete note successful !", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDeleteFail() {
-
+        Toast.makeText(this, "Delete note fail !", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -154,5 +157,11 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onUpdateState() {
         linearLayoutNoteContent.clearFocus();
+        InputMethodManager inputMethodManager = (InputMethodManager) NoteCreationActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = NoteCreationActivity.this.getCurrentFocus();
+        if(view == null){
+            view = new View(getApplicationContext());
+        }
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

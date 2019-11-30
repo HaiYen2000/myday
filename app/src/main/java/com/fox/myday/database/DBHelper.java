@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.fox.myday.Constants;
 
-import static com.fox.myday.Constants.CREATE_EVENTS_TABLE;
+import static com.fox.myday.Constants.CREATE_EVENT_TABLE;
 import static com.fox.myday.Constants.CREATE_NOTE_TABLE;
 import static com.fox.myday.Constants.DATABASE_NAME;
 import static com.fox.myday.Constants.DATABASE_VERSION;
@@ -22,14 +22,14 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         if (Constants.isCreated) {
             Log.i("CREATE_NOTE_TABLE", CREATE_NOTE_TABLE);
-            Log.i("CREATE_EVENT_TABLE", CREATE_EVENTS_TABLE);
+            Log.i("CREATE_EVENT_TABLE", CREATE_EVENT_TABLE);
         }
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_NOTE_TABLE);
-        sqLiteDatabase.execSQL(CREATE_EVENTS_TABLE);
+        sqLiteDatabase.execSQL(CREATE_EVENT_TABLE);
     }
 
     @Override

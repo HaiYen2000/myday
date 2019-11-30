@@ -16,8 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fox.myday.DBOpenHelper;
-import com.fox.myday.DBStructure;
+import com.applandeo.materialcalendarview.EventDay;
 import com.fox.myday.R;
 import com.fox.myday.base.AlarmReceiver;
 import com.fox.myday.daos.EventDAO;
@@ -30,16 +29,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.fox.myday.Constants.ID;
+import static com.fox.myday.Constants.NOTIFY;
+
 
 public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<Event> arrayList;
-    DBOpenHelper dbOpenHelper;
+    EventDAO eventDAO;
 
     public EventRecyclerAdapter(Context context, ArrayList<Event> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+        eventDAO = new EventDAO(context);
     }
 
     @NonNull
@@ -145,28 +148,20 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
 
 
     private void deleteCalendarevent(String event, String date, String time) {
-        dbOpenHelper = new DBOpenHelper(context);
-        SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
-        dbOpenHelper.deleteEvent(event, date, time, database);
-        dbOpenHelper.close();
+        eventDAO.deleteEvent(event, date, time);
     }
 
     private boolean isAlarmed(String date, String event, String time) {
         boolean alarmed = false;
-        dbOpenHelper = new DBOpenHelper(context);
-        SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
-        Cursor cursor = dbOpenHelper.readIDEvents(date, event, time, database);
+        Cursor cursor = eventDAO.readIDEvents(date, event, time);
         while (cursor.moveToNext()) {
-            String notify = cursor.getString(cursor.getColumnIndex(DBStructure.Notify));
+            String notify = cursor.getString(cursor.getColumnIndex(NOTIFY));
             if (notify.equals("on")) {
                 alarmed = true;
             } else {
                 alarmed = false;
             }
-
         }
-        cursor.close();
-        dbOpenHelper.close();
         return alarmed;
     }
 
@@ -190,22 +185,15 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
 
     private int getRequestCode(String date, String event, String time) {
         int code = 0;
-        dbOpenHelper = new DBOpenHelper(context);
-        SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
-        Cursor cursor = dbOpenHelper.readIDEvents(date, event, time, database);
+        Cursor cursor = eventDAO.readIDEvents(date, event, time);
         while (cursor.moveToNext()) {
-            code = cursor.getInt(cursor.getColumnIndex(DBStructure.ID));
+            code = cursor.getInt(cursor.getColumnIndex(ID));
 
         }
-        cursor.close();
-        dbOpenHelper.close();
         return code;
     }
 
     private void updateEvent(String date, String event, String time, String notify) {
-        dbOpenHelper = new DBOpenHelper(context);
-        SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
-        dbOpenHelper.updateEvent(date, event, time, notify, database);
-        dbOpenHelper.close();
+        eventDAO.updateEvent(date, event, time, notify);
     }
 }

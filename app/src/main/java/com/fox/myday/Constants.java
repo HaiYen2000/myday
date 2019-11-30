@@ -25,6 +25,9 @@ public class Constants {
             "" + NOTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             "" + NOTE_TITLE + " TEXT," +
             "" + NOTE_CONTENT + " TEXT NOT NULL," +
+            "" + NOTE_IMAGE_URI + " INTEGER," +
+            "" + NOTE_BACKGROUND_COLOR + " TEXT," +
+            "" + NOTE_TAG + " TEXT," +
             "" + NOTE_CREATED_DATE + " TEXT NOT NULL," +
             "" + NOTE_MODIFIED_DATE + " TEXT" +
             ")";
@@ -56,14 +59,13 @@ public class Constants {
     public static final String YEAR = "year";
 
     public static final String ID = "ID";
-    public static final String Notify = "notify";
+    public static final String NOTIFY = "notify";
     //Query create event(id(integer primary key autoincrement), title (nvarchar(255)), content (nvarchar(255) not null), created_location (text not null))
-
-    public static final String CREATE_EVENTS_TABLE = "create table " +
+    public static final String CREATE_EVENT_TABLE = "create table " +
             EVENT_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
             + EVENT + " TEXT," + TIME + " TEXT,"
             + DATE + " TEXT," + MONTH + " TEXT,"
-            + YEAR + " TEXT," + Notify + " TEXT)";
+            + YEAR + " TEXT," + NOTIFY + " TEXT)";
 
     public static final String API_KEY = BuildConfig.API_KEY;
 
