@@ -42,8 +42,10 @@ dependencies {
     def bottom_bar_version = "1.4.0.1"
     def time_square_version = "1.6.5@aar"
     def week_view_version = "1.2.6"
+    def calendar_view_version = "1.0.1"
     def glide_version = "4.10.0"
     def firebase_auth_version = "16.0.5"
+    def firebase_realtime_database_version = "16.0.4"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -64,6 +66,7 @@ dependencies {
     implementation "com.squareup:android-times-square:$time_square_version"
     //week view calendar custom
     implementation "com.github.alamkanak:android-week-view:$week_view_version"
+    implementation "com.applandeo:material-calendar-view:$calendar_view_version"
     //Dashclock API
     implementation "com.google.android.apps.dashclock:dashclock-api:$dashclock_api_version"
     //ChartView
@@ -76,7 +79,7 @@ dependencies {
     //Firebase
     //Firebase Auth
     implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
-
-    implementation 'com.applandeo:material-calendar-view:1.0.1'
+    //Firebase Realtime Database
+    implementation "com.google.firebase:firebase-database:$firebase_realtime_database_version"
 
 }
