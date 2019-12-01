@@ -232,6 +232,8 @@
     <string name="micro_notes_button">Micro notes button</string>
     <string name="photo_notes_button">Photo notes button</string>
     <string name="note_picture">Note picture</string>
+    <string name="background_color">Choose background</string>
+    <string name="manager_tag">Manage tag</string>
 
     <!--EventActivity-->
     <string name="menu_event">Simple events list</string>
@@ -314,5 +316,15 @@
     <string name="action_login">Sign In</string>
     <string name="action_register">Sign Up</string>
     <string name="action_recover">Recover password</string>
+
+    <!--Tag Dialog-->
+    <string name="tag_name">Tag\'s name</string>
+    <string name="dialog_btn_save">Save</string>
+    <string name="dialog_btn_cancel">Cancel</string>
+    <string name="tag_description">Tag\'s description</string>
+    <string name="tag_create_title">Create new tag</string>
+    <string name="tag_update_title">Update tag</string>
+    <string name="dialog_btn_update">Update</string>
+
 
 </resources>

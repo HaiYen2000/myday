@@ -20,10 +20,6 @@ public class NotePresenter {
         this.noteDAO = new NoteDAO(mContext);
     }
 
-    public void onViewDetailNote(){
-
-    }
-
     public List<Note> onLoadAllNote(){
         return noteDAO.getAllNote();
     }

@@ -66,10 +66,14 @@ public class NoteCreationPresenter {
         edtTitle.setText(current_modify_note.NOTE_TITLE);
         edtContent.setText(current_modify_note.NOTE_CONTENT);
         if(current_modify_note.NOTE_MODIFIED_DATE != null){
-            tvDateModify.setText("Last modification on " + noteDAO.getModifiedDayOfWeek() +", " + current_modify_note.NOTE_MODIFIED_DATE);
+            onUpdateLastModification(tvDateModify, "Last modification on ", noteDAO.getModifiedDayOfWeek() + ", ", current_modify_note.NOTE_MODIFIED_DATE);
         }else{
-            tvDateModify.setText("Create on " + noteDAO.getCreatedDayOfWeek() + ", " + current_modify_note.NOTE_CREATED_DATE);
+            onUpdateLastModification(tvDateModify, "Create on ", noteDAO.getCreatedDayOfWeek() + ", ", current_modify_note.NOTE_CREATED_DATE);
         }
+    }
+
+    public void onUpdateLastModification(TextView tvDateModify, String pre_string, String day, String time){
+        tvDateModify.setText(pre_string + day + time );
     }
 
 }

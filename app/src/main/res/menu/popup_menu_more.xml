@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/manager_tag" android:title="@string/manager_tag" />
+    <item android:id="@+id/background_color" android:title="@string/background_color"/>
+</menu>

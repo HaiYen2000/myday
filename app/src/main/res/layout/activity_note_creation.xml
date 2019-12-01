@@ -10,44 +10,44 @@
 
         <LinearLayout
             android:id="@+id/linearLayoutNoteContent"
-            android:background="@color/colorNoteDefault"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/bottom_toolbar"
+            android:background="@color/colorNoteDefault"
             android:orientation="vertical">
 
             <EditText
-                android:paddingTop="8dp"
-                android:paddingStart="12dp"
                 android:id="@+id/edtTitle"
-                android:inputType="textCapSentences"
-                android:hint="@string/title_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@android:color/transparent"
-                android:textStyle="bold"
                 android:focusable="true"
-                android:focusedByDefault="false"
                 android:focusableInTouchMode="true"
-                tools:ignore="RtlSymmetry"
-                android:paddingLeft="12dp" />
+                android:focusedByDefault="false"
+                android:hint="@string/title_placeholder"
+                android:inputType="textCapSentences"
+                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
 
             <EditText
-                android:paddingStart="12dp"
-                android:paddingTop="8dp"
                 android:id="@+id/edtContent"
-                android:inputType="textCapSentences|textMultiLine"
-                android:focusable="true"
-                android:focusedByDefault="false"
-                android:focusableInTouchMode="true"
-                android:hint="@string/note_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="top|left"
                 android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:focusedByDefault="false"
+                android:gravity="top|left"
+                android:hint="@string/note_placeholder"
+                android:inputType="textCapSentences|textMultiLine"
+                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
                 android:scrollbars="vertical"
-                tools:ignore="RtlHardcoded,RtlSymmetry"
-                android:paddingLeft="12dp" />
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
 
         </LinearLayout>
 

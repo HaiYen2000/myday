@@ -3,6 +3,7 @@ package com.fox.myday.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,13 +14,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fox.myday.R;
+import com.fox.myday.daos.NoteDAO;
 import com.fox.myday.databinding.ActivityNoteCreationBinding;
+import com.fox.myday.fragments.TagFragment;
 import com.fox.myday.interfaces.NoteCreationView;
 import com.fox.myday.presenters.NoteCreationPresenter;
 
@@ -34,6 +40,9 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
     private NoteCreationPresenter noteCreationPresenter;
     private String action;
     private boolean isOpen = false;
+
+    private static final int TAG_FRAGMENT_ID = 1010;
+    private static final String TAG_FRAGMENT_TAG = "TAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,14 +106,47 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
                 noteCreationPresenter.onCreateNote(edtTitle.getText().toString().trim(), edtContent.getText().toString().trim());
                 break;
             case R.id.btnMore:
-                if(!isOpen){
-                    linearLayoutColor.setVisibility(View.VISIBLE);
-                    isOpen = true;
-                }else{
-                    linearLayoutColor.setVisibility(View.GONE);
-                    isOpen = false;
-                }
+                setUpPopupMenu();
                 break;
+        }
+    }
+
+    private void setUpPopupMenu() {
+        PopupMenu popupMenu = new PopupMenu(getApplicationContext(), btnMore);
+        popupMenu.getMenuInflater().inflate(R.menu.popup_menu_more, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case R.id.manager_tag:
+                    FrameLayout frameLayout = new FrameLayout(getApplicationContext());
+                    frameLayout.setId(TAG_FRAGMENT_ID);
+                    setContentView(frameLayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+                    TagFragment tagFragment = new TagFragment();
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.add(TAG_FRAGMENT_ID, tagFragment, TAG_FRAGMENT_TAG).addToBackStack(null).commit();
+                    return true;
+                case R.id.background_color:
+                    if(!isOpen){
+                        linearLayoutColor.setVisibility(View.VISIBLE);
+                        isOpen = true;
+                    }else{
+                        linearLayoutColor.setVisibility(View.GONE);
+                        isOpen = false;
+                    }
+                    return true;
+                default:
+                    return false;
+            }
+        });
+        popupMenu.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if(count == 0){
+            super.onBackPressed();
+        }else{
+            getSupportFragmentManager().popBackStack();
         }
     }
 
@@ -157,10 +199,9 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
     public void onUpdateState() {
         linearLayoutNoteContent.clearFocus();
         InputMethodManager inputMethodManager = (InputMethodManager) NoteCreationActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        View view = NoteCreationActivity.this.getCurrentFocus();
-        if(view == null){
-            view = new View(getApplicationContext());
-        }
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        inputMethodManager.toggleSoftInput(inputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+        int position = getIntent().getExtras().getInt("position");
+        NoteDAO noteDAO = new NoteDAO(getApplicationContext());
+        noteCreationPresenter.onUpdateLastModification(tvDateModify, "Last modification on ", noteDAO.getModifiedDayOfWeek() + ", ", noteDAO.getAllNote().get(position).NOTE_MODIFIED_DATE);
     }
 }
