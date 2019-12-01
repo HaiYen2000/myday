@@ -1,11 +1,8 @@
 package com.fox.myday.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +11,9 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 import com.fox.myday.R;
-import com.fox.myday.activities.NoteActivity;
 import com.fox.myday.adapters.StaggeredRecycleViewEventAdapter;
-import com.fox.myday.adapters.StaggeredRecycleViewNoteAdapter;
-import com.fox.myday.base.BaseActivity;
 import com.fox.myday.base.GridSpacingItemDecoration;
 import com.fox.myday.models.Event;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

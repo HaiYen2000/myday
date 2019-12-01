@@ -2,10 +2,9 @@ package com.fox.myday.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 import com.fox.myday.R;
 import com.fox.myday.base.BaseActivity;
 import com.fox.myday.base.MyBounceInterpolator;
+import com.fox.myday.databinding.ActivityAboutBinding;
 
 public class AboutActivity extends BaseActivity {
 
@@ -27,38 +27,31 @@ public class AboutActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //inflate your activity layout here!
-        @SuppressLint("InflateParams")
-        View contentView = inflater.inflate(R.layout.activity_about, null, false);
+        ActivityAboutBinding activityAboutBinding = DataBindingUtil.inflate(inflater, R.layout.activity_about, null, false);
+        View contentView = activityAboutBinding.getRoot();
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.nav_about);
         setTitle(R.string.menu_about);
         TextView tvFeedback = findViewById(R.id.tvFeedBack);
-        tvFeedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(AboutActivity.this);
-                builder.setTitle("Thanks for your feedback!")
-                        .setMessage("Do you have anything you wish to say to the developer our app ?")
-                        .setPositiveButton("Send Email", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Your code
-                                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                                intent.setType("text/plain");
-                                intent.setData(Uri.parse("mailto:"));
-                                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"namntph06792@fpt.edu.vn"});
-                                intent.putExtra(Intent.EXTRA_SUBJECT, new String[]{getResources().getString(R.string.app_name) + " - " + android.os.Build.BRAND + " " + android.os.Build.MODEL});
-                                //intent.putExtra(Intent.EXTRA_TEXT, message);
-                                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        });
-                AlertDialog alert =builder.create();
-                alert.show();
-            }
+        tvFeedback.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(AboutActivity.this);
+            builder.setTitle("Thanks for your feedback!")
+                    .setMessage("Do you have anything you wish to say to the developer our app ?")
+                    .setPositiveButton("Send Email", (dialog, which) -> {
+                        // Your code
+                        Intent intent = new Intent(Intent.ACTION_SENDTO);
+                        intent.setType("text/plain");
+                        intent.setData(Uri.parse("mailto:"));
+                        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"namntph06792@fpt.edu.vn"});
+                        intent.putExtra(Intent.EXTRA_SUBJECT, new String[]{getResources().getString(R.string.app_name) + " - " + Build.BRAND + " " + Build.MODEL});
+                        //intent.putExtra(Intent.EXTRA_TEXT, message);
+                        startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+                    })
+                    .setNegativeButton("Cancel", (dialog, which) -> {
+                        // do nothing
+                    });
+            AlertDialog alert =builder.create();
+            alert.show();
         });
         onAnimateLogo(tvFeedback);
     }

@@ -1,6 +1,7 @@
 package com.fox.myday.activities;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -17,6 +18,7 @@ import com.db.chart.view.ChartView;
 import com.db.chart.view.LineChartView;
 import com.fox.myday.R;
 import com.fox.myday.base.CommonActivity;
+import com.fox.myday.databinding.ActivityGraphBinding;
 import com.fox.myday.models.Weather;
 import com.fox.myday.tasks.ParseResult;
 import com.fox.myday.utils.UnitConvertor;
@@ -66,6 +68,7 @@ public class GraphActivity extends CommonActivity {
                 theme == R.style.AppTheme_NoActionBar_Classic_Black;
 
         super.onCreate(savedInstanceState);
+        //ActivityGraphBinding activityGraphBinding = DataBindingUtil.setContentView(this, R.layout.activity_graph);
         setContentView(R.layout.activity_graph);
 
         Toolbar toolbar = findViewById(R.id.graph_toolbar);

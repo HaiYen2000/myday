@@ -54,12 +54,7 @@ public class WeatherSettingActivity extends PreferenceActivity implements Shared
         View bar = LayoutInflater.from(this).inflate(R.layout.settings_toolbar, root, false);
         root.addView(bar, 0);
         Toolbar toolbar = findViewById(R.id.settings_toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
 
         addPreferencesFromResource(R.xml.prefs);
     }
@@ -217,12 +212,12 @@ public class WeatherSettingActivity extends PreferenceActivity implements Shared
         setListPreferenceSummary("dateFormat");
     }
 
-    private void checkKey(String key){
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        if (sp.getString(key, "").equals("")){
-            sp.edit().remove(key).apply();
-        }
-    }
+    //private void checkKey(String key){
+    //    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+    //    if (sp.getString(key, "").equals("")){
+    //        sp.edit().remove(key).apply();
+    //    }
+    //}
 
     public class DummyLocationListener implements LocationListener {
 

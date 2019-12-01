@@ -2,10 +2,10 @@ package com.fox.myday.activities;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 
 
@@ -24,6 +24,7 @@ import android.widget.RadioGroup;
 import com.fox.myday.R;
 import com.fox.myday.base.BaseActivity;
 import com.fox.myday.base.CustomCalendarView;
+import com.fox.myday.databinding.ActivityCalendarBinding;
 import com.fox.myday.fragments.DailyViewFragment;
 import com.fox.myday.fragments.MonthlyViewFragment;
 import com.fox.myday.fragments.SimpleEventsListFragment;
@@ -41,8 +42,8 @@ public class CalendarActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //inflate your activity layout here!
-        @SuppressLint("InflateParams")
-        View contentView = inflater.inflate(R.layout.activity_calendar, null, false);
+        ActivityCalendarBinding activityCalendarBinding = DataBindingUtil.inflate(inflater, R.layout.activity_calendar, null, false);
+        View contentView = activityCalendarBinding.getRoot();
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.nav_calendar);
         setTitle(R.string.menu_calendar);
@@ -102,49 +103,18 @@ public class CalendarActivity extends BaseActivity {
                 RadioButton rdoviewyear = (RadioButton) alert.findViewById(R.id.rdoviewyear);
                 RadioButton rdoeventlist = (RadioButton) alert.findViewById(R.id.rdoeventlist);
 
-                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        //doOnDifficultyLevelChanged(radioGroup, i);
+                radioGroup.setOnCheckedChangeListener((radioGroup1, i) -> {
+                    //doOnDifficultyLevelChanged(radioGroup, i);
 
-                    }
                 });
 
-                rdoviewday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        doOnChangeCalendarView(compoundButton, b);
+                rdoviewday.setOnCheckedChangeListener((compoundButton, b) -> doOnChangeCalendarView(compoundButton, b));
+                rdoviewweek.setOnCheckedChangeListener((compoundButton, b) -> doOnChangeCalendarView(compoundButton, b));
 
-                    }
-                });
-                rdoviewweek.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        doOnChangeCalendarView(compoundButton, b);
-                    }
-                });
+                rdoviewmonth.setOnCheckedChangeListener((compoundButton, b) -> doOnChangeCalendarView(compoundButton, b));
 
-                rdoviewmonth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        doOnChangeCalendarView(compoundButton, b);
-
-                    }
-                });
-
-                rdoeventlist.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        doOnChangeCalendarView(compoundButton, b);
-
-                    }
-                });
-                rdoviewyear.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        doOnChangeCalendarView(compoundButton, b);
-                    }
-                });
+                rdoeventlist.setOnCheckedChangeListener((compoundButton, b) -> doOnChangeCalendarView(compoundButton, b));
+                rdoviewyear.setOnCheckedChangeListener((compoundButton, b) -> doOnChangeCalendarView(compoundButton, b));
 
                 builder.create().show();
                 break;

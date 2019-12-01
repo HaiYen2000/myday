@@ -1,6 +1,7 @@
 package com.fox.myday.activities;
 
 import androidx.annotation.IdRes;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
@@ -14,6 +15,7 @@ import android.webkit.WebViewClient;
 
 import com.fox.myday.R;
 import com.fox.myday.base.CommonActivity;
+import com.fox.myday.databinding.ActivityMapBinding;
 import com.fox.myday.viewmodels.MapViewModel;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
@@ -31,6 +33,7 @@ public class MapActivity extends CommonActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         super.onCreate(savedInstanceState);
+        //ActivityMapBinding activityMapBinding = DataBindingUtil.setContentView(this, R.layout.activity_map);
         setContentView(R.layout.activity_map);
 
         mapViewModel = ViewModelProviders.of(this).get(MapViewModel.class);

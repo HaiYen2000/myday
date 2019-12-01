@@ -2,7 +2,6 @@ package com.fox.myday.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class MyGridAdapter extends ArrayAdapter {
+
     List<Date> dates;
     Calendar currentDate;
     List<Event> events;
@@ -102,4 +102,5 @@ public class MyGridAdapter extends ArrayAdapter {
     public Object getItem(int position) {
         return dates.get(position);
     }
+
 }

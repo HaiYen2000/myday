@@ -2,10 +2,10 @@ package com.fox.myday.activities;
 
 
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 
 import android.media.AudioAttributes;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,11 +13,9 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.fox.myday.R;
-import com.fox.myday.base.BaseActivity;
 import com.fox.myday.base.NoStatusBarActivity;
+import com.fox.myday.databinding.ActivitySplashBinding;
 
 import static com.fox.myday.Constants.MAX_STREAM;
 import static com.fox.myday.Constants.SPLASH_TIME_OUT;
@@ -42,6 +40,7 @@ public class SplashActivity extends NoStatusBarActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hideStatusBar();
+        //ActivitySplashBinding activitySplashBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         setContentView(R.layout.activity_splash);
         initViews();
         onLoadSoundPool();

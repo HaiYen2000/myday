@@ -1,7 +1,5 @@
 package com.fox.myday.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,10 +19,7 @@ import java.util.Date;
 
 public class YearlyViewFragment extends Fragment {
 
-    public YearlyViewFragment() {
-    }
-
-
+    public YearlyViewFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

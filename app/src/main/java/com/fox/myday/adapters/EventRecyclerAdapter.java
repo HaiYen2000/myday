@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.applandeo.materialcalendarview.EventDay;
 import com.fox.myday.R;
 import com.fox.myday.base.AlarmReceiver;
 import com.fox.myday.daos.EventDAO;
@@ -58,13 +56,10 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         holder.Event.setText(events.getEvent());
         holder.DateTxt.setText(events.getDate());
         holder.Time.setText(events.getTime());
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deleteCalendarevent(events.getEvent(), events.getDate(), events.getTime());
-                arrayList.remove(position);
-                notifyDataSetChanged();
-            }
+        holder.delete.setOnClickListener(view -> {
+            deleteCalendarevent(events.getEvent(), events.getDate(), events.getTime());
+            arrayList.remove(position);
+            notifyDataSetChanged();
         });
         if (isAlarmed(events.getDate(), events.getEvent(), events.getTime())) {
             holder.setAlarm.setImageResource(R.drawable.ic_action_notification_on);
@@ -82,24 +77,21 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         final int alarmMinuit = timecalendar.get(Calendar.MINUTE);
 
 
-        holder.setAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isAlarmed(events.getDate(), events.getEvent(), events.getTime())) {
-                    holder.setAlarm.setImageResource(R.drawable.ic_action_notification_off);
-                    cancelAlarm(getRequestCode(events.getDate(), events.getEvent(), events.getTime()));
-                    updateEvent(events.getDate(), events.getEvent(), events.getTime(), "off");
-                    notifyDataSetChanged();
-                } else {
-                    holder.setAlarm.setImageResource(R.drawable.ic_action_notification_on);
-                    Calendar alarmCalendar = Calendar.getInstance();
-                    alarmCalendar.set(alarmYear, alarmMonth, alarmDay, alarmHour, alarmMinuit);
-                    setAlarm(alarmCalendar, events.getEvent(), events.getTime(), getRequestCode(events.getDate(),
-                            events.getTime(), events.getTime()));
-                    updateEvent(events.getDate(), events.getEvent(), events.getTime(), "on");
-                    notifyDataSetChanged();
+        holder.setAlarm.setOnClickListener(view -> {
+            if (isAlarmed(events.getDate(), events.getEvent(), events.getTime())) {
+                holder.setAlarm.setImageResource(R.drawable.ic_action_notification_off);
+                cancelAlarm(getRequestCode(events.getDate(), events.getEvent(), events.getTime()));
+                updateEvent(events.getDate(), events.getEvent(), events.getTime(), "off");
+                notifyDataSetChanged();
+            } else {
+                holder.setAlarm.setImageResource(R.drawable.ic_action_notification_on);
+                Calendar alarmCalendar = Calendar.getInstance();
+                alarmCalendar.set(alarmYear, alarmMonth, alarmDay, alarmHour, alarmMinuit);
+                setAlarm(alarmCalendar, events.getEvent(), events.getTime(), getRequestCode(events.getDate(),
+                        events.getTime(), events.getTime()));
+                updateEvent(events.getDate(), events.getEvent(), events.getTime(), "on");
+                notifyDataSetChanged();
 
-                }
             }
         });
     }

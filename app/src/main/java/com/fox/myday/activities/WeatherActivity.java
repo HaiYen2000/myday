@@ -5,12 +5,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -42,6 +42,7 @@ import com.fox.myday.adapters.ViewPagerAdapter;
 import com.fox.myday.adapters.WeatherRecyclerAdapter;
 import com.fox.myday.base.AlarmReceiver;
 import com.fox.myday.base.WeatherBaseActivity;
+import com.fox.myday.databinding.ActivityWeatherBinding;
 import com.fox.myday.fragments.AboutDialogFragment;
 import com.fox.myday.fragments.AmbiguousLocationDialogFragment;
 import com.fox.myday.fragments.RecyclerViewFragment;
@@ -130,8 +131,8 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //inflate your activity layout here!
-        @SuppressLint("InflateParams")
-        View contentView = inflater.inflate(R.layout.activity_weather, null, false);
+        ActivityWeatherBinding activityWeatherBinding = DataBindingUtil.inflate(inflater, R.layout.activity_weather, null, false);
+        View contentView = activityWeatherBinding.getRoot();
         drawerLayout.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.nav_weather);
         setTitle(R.string.menu_weather);
@@ -183,20 +184,14 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
         AlarmReceiver.setRecurringAlarm(this);
 
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshWeather();
-                swipeRefreshLayout.setRefreshing(false);
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            refreshWeather();
+            swipeRefreshLayout.setRefreshing(false);
         });
 
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                // Only allow pull to refresh when scrolled to top
-                swipeRefreshLayout.setEnabled(verticalOffset == 0);
-            }
+        appBarLayout.addOnOffsetChangedListener((appBarLayout1, verticalOffset) -> {
+            // Only allow pull to refresh when scrolled to top
+            swipeRefreshLayout.setEnabled(verticalOffset == 0);
         });
 
         Bundle bundle = getIntent().getExtras();
@@ -310,19 +305,15 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
         input.setSingleLine(true);
         alert.setView(input, 32, 0, 32, 0);
 
-        alert.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                String result = input.getText().toString();
-                if (!result.isEmpty()) {
-                    new FindCitiesByNameTask(getApplicationContext(),
-                            WeatherActivity.this, progressDialog).execute("city", result);
-                }
+        alert.setPositiveButton(R.string.dialog_ok, (dialog, whichButton) -> {
+            String result = input.getText().toString();
+            if (!result.isEmpty()) {
+                new FindCitiesByNameTask(getApplicationContext(),
+                        WeatherActivity.this, progressDialog).execute("city", result);
             }
         });
-        alert.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // Cancelled
-            }
+        alert.setNegativeButton(R.string.dialog_cancel, (dialog, whichButton) -> {
+            // Cancelled
         });
         alert.show();
     }
@@ -516,12 +507,9 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
         todaySunset.setText(getString(R.string.sunset) + ": " + timeFormat.format(todayWeather.getSunset()));
         todayIcon.setText(todayWeather.getIcon());
 
-        todayIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(WeatherActivity.this, GraphActivity.class);
-                startActivity(intent);
-            }
+        todayIcon.setOnClickListener(view -> {
+            Intent intent = new Intent(WeatherActivity.this, GraphActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -793,14 +781,11 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
             progressDialog = new ProgressDialog(this);
             progressDialog.setMessage(getString(R.string.getting_location));
             progressDialog.setCancelable(false);
-            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.dialog_cancel), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    try {
-                        locationManager.removeUpdates(WeatherActivity.this);
-                    } catch (SecurityException e) {
-                        e.printStackTrace();
-                    }
+            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.dialog_cancel), (dialogInterface, i) -> {
+                try {
+                    locationManager.removeUpdates(WeatherActivity.this);
+                } catch (SecurityException e) {
+                    e.printStackTrace();
                 }
             });
             progressDialog.show();
@@ -819,17 +804,11 @@ public class WeatherActivity extends WeatherBaseActivity implements LocationList
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle(R.string.location_settings);
         alertDialog.setMessage(R.string.location_settings_message);
-        alertDialog.setPositiveButton(R.string.location_settings_button, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(intent);
-            }
+        alertDialog.setPositiveButton(R.string.location_settings_button, (dialog, which) -> {
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(intent);
         });
-        alertDialog.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        alertDialog.setNegativeButton(R.string.dialog_cancel, (dialog, which) -> dialog.cancel());
         alertDialog.show();
     }
 

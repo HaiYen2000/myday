@@ -60,12 +60,7 @@ public class AmbiguousLocationDialogFragment extends DialogFragment implements L
         toolbar.setTitle("Locations");
 
         toolbar.setNavigationIcon(R.drawable.ic_close_black_24dp);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStack();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view1 -> getActivity().getSupportFragmentManager().popBackStack());
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/holo_orange_light"
-
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <EditText
         android:id="@+id/edttypeevent"
         android:layout_width="match_parent"
@@ -30,7 +31,6 @@
             tools:ignore="ContentDescription,HardcodedText" />
 
         <TextView
-
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +44,6 @@
             tools:ignore="HardcodeddText" />
 
         <CheckBox
-
             android:id="@+id/alarme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,4 +64,5 @@
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textStyle="bold" />
+
 </LinearLayout>

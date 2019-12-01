@@ -15,8 +15,7 @@ import com.fox.myday.activities.WeatherActivity;
 public class RecyclerViewFragment extends Fragment {
 
 
-    public RecyclerViewFragment() {
-    }
+    public RecyclerViewFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

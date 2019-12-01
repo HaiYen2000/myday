@@ -13,11 +13,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.ViewPager;
 
 import com.fox.myday.R;
 import com.fox.myday.adapters.IntroViewPagerAdapater;
 import com.fox.myday.base.BaseActivity;
+import com.fox.myday.databinding.ActivityIntroBinding;
 import com.fox.myday.prefs.PrefManager;
 
 public class IntroActivity extends BaseActivity {
@@ -33,6 +35,7 @@ public class IntroActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //ActivityIntroBinding activityIntroBinding = DataBindingUtil.setContentView(this, R.layout.activity_intro);
         setContentView(R.layout.activity_intro);
 
         // Checking for first time launch - before calling setContentView()

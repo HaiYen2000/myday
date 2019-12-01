@@ -120,6 +120,6 @@
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="7">
-    </GridView>
+        android:numColumns="7"/>
+
 </LinearLayout>
