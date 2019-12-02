@@ -1,10 +1,12 @@
 package com.fox.myday.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -19,6 +21,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupMenu;
+import android.widget.RadioGroup;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,16 +33,21 @@ import com.fox.myday.fragments.TagFragment;
 import com.fox.myday.interfaces.NoteCreationView;
 import com.fox.myday.presenters.NoteCreationPresenter;
 
+
 public class NoteCreationActivity extends AppCompatActivity implements View.OnClickListener, NoteCreationView {
 
     private LinearLayout linearLayoutColor, linearLayoutNoteContent;
+    private TableLayout bottomToolbar;
+    private ActionBar actionBar;
     private EditText edtTitle;
     private EditText edtContent;
     private ImageButton btnSave;
     private TextView tvDateModify;
     private ImageButton btnMore;
+    private RadioGroup colorPickerRadioGroup;
     private NoteCreationPresenter noteCreationPresenter;
     private String action;
+    private String noteColor;
     private boolean isOpen = false;
 
     private static final int TAG_FRAGMENT_ID = 1010;
@@ -54,7 +63,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         Bundle bundle = getIntent().getExtras();
         action = bundle.getString("action");
         if (!action.equalsIgnoreCase("create")){
-            noteCreationPresenter.onInitDataModify(edtTitle, edtContent, tvDateModify, getIntent().getExtras().getInt("position"));
+            noteCreationPresenter.onInitDataModify(edtTitle, edtContent, tvDateModify, NoteCreationActivity.this, linearLayoutNoteContent, linearLayoutColor, bottomToolbar, actionBar, btnMore, getIntent().getExtras().getInt("position"));
             btnSave.setEnabled(false);
         }else{
             btnSave.setOnClickListener(this);
@@ -63,6 +72,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initViews(){
+        actionBar = getSupportActionBar();
         edtTitle = findViewById(R.id.edtTitle);
         edtContent = findViewById(R.id.edtContent);
         btnSave = findViewById(R.id.btnSave);
@@ -71,6 +81,8 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         noteCreationPresenter = new NoteCreationPresenter(this, NoteCreationActivity.this);
         linearLayoutColor = findViewById(R.id.linearLayoutColor);
         linearLayoutNoteContent = findViewById(R.id.linearLayoutNoteContent);
+        colorPickerRadioGroup = findViewById(R.id.color_picker_radio_group);
+        bottomToolbar = findViewById(R.id.bottom_toolbar);
     }
 
 
@@ -89,7 +101,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
             String title = edtTitle.getText().toString().trim();
             String content = edtContent.getText().toString().trim();
             int position = getIntent().getExtras().getInt("position");
-            noteCreationPresenter.onEditNote(position, title, content);
+            noteCreationPresenter.onEditNote(position, title, content, noteColor);
             return true;
         }
         if(item.getItemId() == R.id.action_remove){
@@ -103,7 +115,8 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSave:
-                noteCreationPresenter.onCreateNote(edtTitle.getText().toString().trim(), edtContent.getText().toString().trim());
+
+                noteCreationPresenter.onCreateNote(edtTitle.getText().toString().trim(), edtContent.getText().toString().trim(), noteColor);
                 break;
             case R.id.btnMore:
                 setUpPopupMenu();
@@ -127,6 +140,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
                 case R.id.background_color:
                     if(!isOpen){
                         linearLayoutColor.setVisibility(View.VISIBLE);
+                        getBackGroundColor();
                         isOpen = true;
                     }else{
                         linearLayoutColor.setVisibility(View.GONE);
@@ -139,6 +153,53 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         });
         popupMenu.show();
     }
+
+    @SuppressLint("ResourceType")
+    public void getBackGroundColor() {
+        colorPickerRadioGroup.setOnCheckedChangeListener((radioGroup, i) -> {
+            switch (i){
+                case R.id.default_color_checkbox :
+                    noteColor = getResources().getString(R.color.colorNoteDefault);
+                    break;
+                case R.id.red_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteRed);
+                    break;
+                case R.id.orange_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteOrange);
+                    break;
+                case R.id.yellow_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteYellow);
+                    break;
+                case R.id.green_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteGreen);
+                    break;
+                case R.id.cyan_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteCyan);
+                    break;
+                case R.id.light_blue_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteLightBlue);
+                    break;
+                case R.id.dark_blue_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteDarkBlue);
+                    break;
+                case R.id.purple_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNotePurple);
+                    break;
+                case R.id.pink_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNotePink);
+                    break;
+                case R.id.brown_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteBrow);
+                    break;
+                case R.id.grey_color_checkbox:
+                    noteColor = getResources().getString(R.color.colorNoteGrey);
+                    break;
+            }
+            noteCreationPresenter.setBackgroundColor(NoteCreationActivity.this, linearLayoutNoteContent, linearLayoutColor, bottomToolbar, actionBar, btnMore, noteColor);
+        });
+    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -204,4 +265,26 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         NoteDAO noteDAO = new NoteDAO(getApplicationContext());
         noteCreationPresenter.onUpdateLastModification(tvDateModify, "Last modification on ", noteDAO.getModifiedDayOfWeek() + ", ", noteDAO.getAllNote().get(position).NOTE_MODIFIED_DATE);
     }
+
+    @SuppressLint("NewApi")
+    @Override
+    public void onUpdateBackgroundColor() {
+        int position = getIntent().getExtras().getInt("position");
+        NoteDAO noteDAO = new NoteDAO(getApplicationContext());
+        String color = noteDAO.getAllNote().get(position).NOTE_BACKGROUND_COLOR;
+        noteCreationPresenter.setBackgroundColor(NoteCreationActivity.this, linearLayoutNoteContent, linearLayoutColor, bottomToolbar, actionBar, btnMore, color);
+    }
+
+    @Override
+    public void onEmptyContent() {
+        Toast.makeText(this, "Content can not be empty !", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSameNoteData() {
+        Toast.makeText(this, "Your note has not changed yet !", Toast.LENGTH_SHORT).show();
+    }
+
+
+
 }

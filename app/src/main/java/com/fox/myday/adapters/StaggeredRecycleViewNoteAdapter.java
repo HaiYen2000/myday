@@ -1,6 +1,7 @@
 package com.fox.myday.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -36,6 +37,7 @@ public class StaggeredRecycleViewNoteAdapter extends RecyclerView.Adapter<NoteVi
         Note note = mNotes.get(position);
         holder.tvTitle.setText(note.NOTE_TITLE);
         holder.tvContent.setText(note.NOTE_CONTENT);
+        holder.rowCardView.setCardBackgroundColor(Color.parseColor(note.NOTE_BACKGROUND_COLOR));
     }
 
     @Override

@@ -18,4 +18,10 @@ public interface NoteCreationView {
 
     void onUpdateState();
 
+    void onEmptyContent();
+
+    void onSameNoteData();
+
+    void onUpdateBackgroundColor();
+
 }
