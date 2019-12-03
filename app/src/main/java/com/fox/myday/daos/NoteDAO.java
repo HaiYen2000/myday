@@ -170,10 +170,10 @@ public class NoteDAO extends Constants {
         return day_of_week;
     }
 
-    public Note getNote(int id) {
+    public Note getNote(int pos) {
         Note note = null;
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(NOTE_TABLE, new String[]{NOTE_ID, NOTE_TITLE, NOTE_CONTENT, NOTE_CREATED_DATE, NOTE_MODIFIED_DATE}, NOTE_ID + " = ? ", new String[]{String.valueOf(id)}, null, null, null, null);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.query(NOTE_TABLE, new String[]{NOTE_ID, NOTE_TITLE, NOTE_CONTENT, NOTE_CREATED_DATE, NOTE_MODIFIED_DATE}, NOTE_ID + " = ? ", new String[]{String.valueOf(getId(pos))}, null, null, null, null);
         if (cursor != null){
             if(cursor.getCount() > 0){
                 cursor.moveToFirst();
@@ -187,21 +187,15 @@ public class NoteDAO extends Constants {
                     note = new Note(id_, title_, content_, background_color_, created_date_,modified_date_);
                 }
                 cursor.close();
-                db.close();
+                //db.close();
+                return note;
             }
         }
-
-        return note;
+        return null;
     }
 
-    public int getPosition(int id) {
-        int pos = 0;
-        for (int i = 0; i < new NoteDAO(dbHelper).getAllNote().size(); i++) {
-            if (new NoteDAO(dbHelper).getAllNote().get(i).NOTE_ID == id) {
-                pos = i;
-            }
-        }
-        return pos;
+    public int getId(int pos) {
+        return new NoteDAO(dbHelper).getAllNote().get(pos).NOTE_ID;
     }
 
 }

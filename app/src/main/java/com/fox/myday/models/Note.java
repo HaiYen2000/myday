@@ -7,7 +7,7 @@ public class Note {
     public String NOTE_CONTENT;
     public int NOTE_IMAGE_URI;
     public String NOTE_BACKGROUND_COLOR;
-    public String NOTE_TAG;
+    public int NOTE_TAG;
     public String NOTE_CREATED_DATE;
     public String NOTE_MODIFIED_DATE;
 

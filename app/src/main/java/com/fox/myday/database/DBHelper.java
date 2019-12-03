@@ -20,6 +20,15 @@ import static com.fox.myday.Constants.TAG_TABLE;
 
 public class DBHelper extends SQLiteOpenHelper {
 
+    private static DBHelper sInstance;
+
+    public static synchronized DBHelper getInstance(Context context){
+        if(sInstance == null){
+            sInstance = new DBHelper(context.getApplicationContext());
+        }
+        return sInstance;
+    }
+
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         if (Constants.isCreated) {

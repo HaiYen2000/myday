@@ -226,6 +226,7 @@
     <string name="note_actions_more">Delete note</string>
     <string name="note_actions_search">Search note</string>
     <string name="note_actions_sync">Sync Firebase</string>
+    <string name="note_actions_add_tag">Add tag</string>
     <string name="note_types">note_types</string>
     <string name="checkbox_notes_button">Checkbox notes button</string>
     <string name="draw_notes_button">Draw notes button</string>
@@ -325,6 +326,7 @@
     <string name="tag_create_title">Create new tag</string>
     <string name="tag_update_title">Update tag</string>
     <string name="dialog_btn_update">Update</string>
+
 
 
 </resources>

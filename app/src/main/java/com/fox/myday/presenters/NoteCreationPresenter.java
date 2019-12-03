@@ -1,19 +1,15 @@
 package com.fox.myday.presenters;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
 
 import com.fox.myday.daos.NoteDAO;
 import com.fox.myday.interfaces.NoteCreationView;
@@ -85,11 +81,11 @@ public class NoteCreationPresenter {
         }, NAVIGATE_TIME_OUT);
     }
 
-    public void onInitDataModify(EditText edtTitle, EditText edtContent, TextView tvDateModify,Activity activity,  LinearLayout l1, LinearLayout l2, TableLayout tb, ActionBar ab, ImageButton ib, int pos){
+    public void onInitDataModify(EditText edtTitle, EditText edtContent, TextView tvDateModify, LinearLayout l1, LinearLayout l2, TableLayout tb, int pos){
         Note current_modify_note = noteDAO.getAllNote().get(pos);
         edtTitle.setText(current_modify_note.NOTE_TITLE);
         edtContent.setText(current_modify_note.NOTE_CONTENT);
-        setBackgroundColor(activity, l1, l2, tb, ab, ib, current_modify_note.NOTE_BACKGROUND_COLOR);
+        setBackgroundColor(l1, l2, tb, current_modify_note.NOTE_BACKGROUND_COLOR);
         if(current_modify_note.NOTE_MODIFIED_DATE != null){
             onUpdateLastModification(tvDateModify, "Last modification on ", noteDAO.getModifiedDayOfWeek() + ", ", current_modify_note.NOTE_MODIFIED_DATE);
         }else{
@@ -97,26 +93,30 @@ public class NoteCreationPresenter {
         }
     }
 
+    public String getColorString(int pos){
+        return noteDAO.getAllNote().get(pos).NOTE_BACKGROUND_COLOR;
+    }
+
     public void onUpdateLastModification(TextView tvDateModify, String pre_string, String day, String time){
         tvDateModify.setText(pre_string + day + time );
     }
 
     @SuppressLint("NewApi")
-    public void setBackgroundColor(Activity activity, LinearLayout l1, LinearLayout l2, TableLayout tb, ActionBar ab, ImageButton ib, String color){
+    public void setBackgroundColor(LinearLayout l1, LinearLayout l2, TableLayout tb, String color){
         l1.setBackgroundColor(Color.parseColor(color));
         l2.setBackgroundColor(Color.parseColor(color));
         tb.setBackgroundColor(Color.parseColor(color));
-        ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor(color)));
-        activity.getWindow().setStatusBarColor(darkenNoteColor(Color.parseColor(color), 0.7f));
-        ib.setBackgroundColor(darkenNoteColor(Color.parseColor(color), 0.9f));
+        //ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor(color)));
+        //activity.getWindow().setStatusBarColor(darkenNoteColor(Color.parseColor(color), 0.7f));
+        //ib.setBackgroundColor(darkenNoteColor(Color.parseColor(color), 0.9f));
     }
 
-    private static int darkenNoteColor(int color, float factor) {
-        int a = Color.alpha(color);
-        int r = Math.round(Color.red(color) * factor);
-        int g = Math.round(Color.green(color) * factor);
-        int b = Math.round(Color.blue(color) * factor);
-        return Color.argb(a, Math.min(r,255), Math.min(g,255), Math.min(b,255));
-    }
+//    private static int darkenNoteColor(int color, float factor) {
+//        int a = Color.alpha(color);
+//        int r = Math.round(Color.red(color) * factor);
+//        int g = Math.round(Color.green(color) * factor);
+//        int b = Math.round(Color.blue(color) * factor);
+//        return Color.argb(a, Math.min(r,255), Math.min(g,255), Math.min(b,255));
+//    }
 
 }

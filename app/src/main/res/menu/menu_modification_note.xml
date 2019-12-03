@@ -11,4 +11,16 @@
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.Spinner" />
 
+    <item
+        android:id="@+id/action_remove"
+        android:icon="@drawable/ic_icon_remove"
+        android:title="@string/note_actions_remove"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/ic_icon_edit"
+        android:title="@string/note_actions_edit"
+        app:showAsAction="ifRoom" />
+
 </menu>

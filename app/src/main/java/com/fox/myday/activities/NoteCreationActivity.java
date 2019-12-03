@@ -3,7 +3,6 @@ package com.fox.myday.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
@@ -11,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,13 +28,15 @@ import android.widget.Toast;
 
 import com.fox.myday.R;
 import com.fox.myday.daos.NoteDAO;
-import com.fox.myday.databinding.ActivityNoteCreationBinding;
 import com.fox.myday.fragments.TagFragment;
 import com.fox.myday.interfaces.NoteCreationView;
+import com.fox.myday.interfaces.TagView;
+import com.fox.myday.models.Note;
 import com.fox.myday.presenters.NoteCreationPresenter;
+import com.fox.myday.presenters.TagPresenter;
 
 
-public class NoteCreationActivity extends AppCompatActivity implements View.OnClickListener, NoteCreationView {
+public class NoteCreationActivity extends AppCompatActivity implements View.OnClickListener, NoteCreationView, TagView {
 
     private LinearLayout linearLayoutColor, linearLayoutNoteContent;
     private TableLayout bottomToolbar;
@@ -46,6 +48,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
     private ImageButton btnMore;
     private RadioGroup colorPickerRadioGroup;
     private NoteCreationPresenter noteCreationPresenter;
+    private TagPresenter tagPresenter;
     private String action;
     private String noteColor;
     private boolean isOpen = false;
@@ -63,7 +66,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         Bundle bundle = getIntent().getExtras();
         action = bundle.getString("action");
         if (!action.equalsIgnoreCase("create")){
-            noteCreationPresenter.onInitDataModify(edtTitle, edtContent, tvDateModify, NoteCreationActivity.this, linearLayoutNoteContent, linearLayoutColor, bottomToolbar, actionBar, btnMore, getIntent().getExtras().getInt("position"));
+            noteCreationPresenter.onInitDataModify(edtTitle, edtContent, tvDateModify, linearLayoutNoteContent, linearLayoutColor, bottomToolbar, getIntent().getExtras().getInt("position"));
             btnSave.setEnabled(false);
         }else{
             btnSave.setOnClickListener(this);
@@ -71,6 +74,8 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         btnMore.setOnClickListener(this );
     }
 
+
+    @SuppressLint("ResourceType")
     private void initViews(){
         actionBar = getSupportActionBar();
         edtTitle = findViewById(R.id.edtTitle);
@@ -79,6 +84,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         tvDateModify = findViewById(R.id.tvDateModify);
         btnMore = findViewById(R.id.btnMore);
         noteCreationPresenter = new NoteCreationPresenter(this, NoteCreationActivity.this);
+        tagPresenter = new TagPresenter(this, NoteCreationActivity.this);
         linearLayoutColor = findViewById(R.id.linearLayoutColor);
         linearLayoutNoteContent = findViewById(R.id.linearLayoutNoteContent);
         colorPickerRadioGroup = findViewById(R.id.color_picker_radio_group);
@@ -88,19 +94,30 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(!action.equalsIgnoreCase("create")){
+        if(action.equalsIgnoreCase("modify")){
+            getMenuInflater().inflate(R.menu.menu_modification_note, menu);
+            return true;
+        }else if(action.equalsIgnoreCase("create")){
             getMenuInflater().inflate(R.menu.menu_creation_note, menu);
             return true;
         }
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.action_add_tag){
+
+        }
         if(item.getItemId() == R.id.action_edit){
             String title = edtTitle.getText().toString().trim();
             String content = edtContent.getText().toString().trim();
             int position = getIntent().getExtras().getInt("position");
+            String current_color = new NoteDAO(this).getAllNote().get(position).NOTE_BACKGROUND_COLOR;
+            if(noteColor == null){
+                noteColor = current_color;
+            }
             noteCreationPresenter.onEditNote(position, title, content, noteColor);
             return true;
         }
@@ -111,11 +128,14 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSave:
-
+                if(noteColor == null){
+                    noteColor = getResources().getString(R.color.colorNoteDefault);
+                }
                 noteCreationPresenter.onCreateNote(edtTitle.getText().toString().trim(), edtContent.getText().toString().trim(), noteColor);
                 break;
             case R.id.btnMore:
@@ -158,9 +178,6 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
     public void getBackGroundColor() {
         colorPickerRadioGroup.setOnCheckedChangeListener((radioGroup, i) -> {
             switch (i){
-                case R.id.default_color_checkbox :
-                    noteColor = getResources().getString(R.color.colorNoteDefault);
-                    break;
                 case R.id.red_color_checkbox:
                     noteColor = getResources().getString(R.color.colorNoteRed);
                     break;
@@ -194,12 +211,14 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
                 case R.id.grey_color_checkbox:
                     noteColor = getResources().getString(R.color.colorNoteGrey);
                     break;
+                case R.id.default_color_checkbox :
+                default:
+                    noteColor = getResources().getString(R.color.colorNoteDefault);
+                    break;
             }
-            noteCreationPresenter.setBackgroundColor(NoteCreationActivity.this, linearLayoutNoteContent, linearLayoutColor, bottomToolbar, actionBar, btnMore, noteColor);
+            noteCreationPresenter.setBackgroundColor(linearLayoutNoteContent, linearLayoutColor, bottomToolbar, noteColor);
         });
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -272,7 +291,7 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         int position = getIntent().getExtras().getInt("position");
         NoteDAO noteDAO = new NoteDAO(getApplicationContext());
         String color = noteDAO.getAllNote().get(position).NOTE_BACKGROUND_COLOR;
-        noteCreationPresenter.setBackgroundColor(NoteCreationActivity.this, linearLayoutNoteContent, linearLayoutColor, bottomToolbar, actionBar, btnMore, color);
+        noteCreationPresenter.setBackgroundColor(linearLayoutNoteContent, linearLayoutColor, bottomToolbar, color);
     }
 
     @Override
@@ -285,6 +304,43 @@ public class NoteCreationActivity extends AppCompatActivity implements View.OnCl
         Toast.makeText(this, "Your note has not changed yet !", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onCreateTagSuccess() {
 
+    }
 
+    @Override
+    public void onCreateTagFail() {
+
+    }
+
+    @Override
+    public void onUpdateTagSuccess() {
+
+    }
+
+    @Override
+    public void onUpdateTagFail() {
+
+    }
+
+    @Override
+    public void onDeleteTagSuccess() {
+
+    }
+
+    @Override
+    public void onDeleteTagFail() {
+
+    }
+
+    @Override
+    public void onSameTagValue() {
+
+    }
+
+    @Override
+    public void onEmptyTag() {
+
+    }
 }
