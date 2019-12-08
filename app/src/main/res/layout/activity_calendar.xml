@@ -22,6 +22,7 @@
         <!--        android:src="@drawable/ic_playlist_add_black_24dp"-->
         <!--        app:backgroundTint="@color/colorWhite" />-->
         <com.fox.myday.base.CustomCalendarView
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:id="@+id/customcalendaview"
             android:layout_height="match_parent">
