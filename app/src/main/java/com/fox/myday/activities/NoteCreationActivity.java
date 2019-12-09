@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +30,6 @@ import com.fox.myday.daos.NoteDAO;
 import com.fox.myday.fragments.TagFragment;
 import com.fox.myday.interfaces.NoteCreationView;
 import com.fox.myday.interfaces.TagView;
-import com.fox.myday.models.Note;
 import com.fox.myday.presenters.NoteCreationPresenter;
 import com.fox.myday.presenters.TagPresenter;
 

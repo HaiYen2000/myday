@@ -31,7 +31,7 @@ public class RegisterFragment extends Fragment implements OnRegisterListener, Vi
     private Button btnRegister;
     private ProgressBar progressBar;
 
-    public RegisterFragment() {}
+    public RegisterFragment(){}
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
